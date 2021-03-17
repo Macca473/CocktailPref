@@ -1,0 +1,7 @@
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.csprojAssemblyReference.cache
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.AssemblyInfoInputs.cache
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.AssemblyInfo.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.csproj.CoreCompileInputs.cache
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\DrinkAPI\obj\Debug\net5.0\DrinkAPI.MvcApplicationPartsAssemblyInfo.cache

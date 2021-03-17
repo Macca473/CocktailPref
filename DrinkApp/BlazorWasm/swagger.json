@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "DrinkAPI",
+    "version": "v1"
+  },
+  //"servers": {
+  //  "- url": "https://www.thecocktaildb.com/api/json/v1/1"
+  //},
+  "paths": {
+    "/search.php?s={drinkName}": {
+      "get": {
+        "tags": [
+          "DrinkSearchClass"
+        ],
+        "operationId": "GetDrink",
+        "summary": "Search Drink Name",
+        "parameters": [
+          {
+            "name": "drinkName",
+            "in": "path",
+            "description": "drink to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Drink"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Drink"
+                  }
+                }
+                },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Drink"
+                  }
+                }
+                }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+              "Drink": {
+                "type": "object",
+                "properties": {
+                  "strDrink": {
+                    "type": "string",
+                    "nullable": false
+                  },
+                  "strInstructions": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "additionalProperties": false
+              }
+    }
+  }
+}
+
+
+

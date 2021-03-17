@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "vCBJ10j4oPkJTZAUIS+uXytp4K/B3zkl0c0qhIXZbB7FBiuiOoSOc4Z7D6+NnfTlkm0M7ydOhNsKKbyhQPVwbQ==",
+  "success": true,
+  "projectFilePath": "D:\\dotNetStuff\\CocktailPrefRepo\\CocktailPref\\DrinkApp\\ConsoleApp\\ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Macca\\.nuget\\packages\\microsoft.extensions.apidescription.client\\3.0.0\\microsoft.extensions.apidescription.client.3.0.0.nupkg.sha512",
+    "C:\\Users\\Macca\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\Macca\\.nuget\\packages\\nswag.apidescription.client\\13.0.5\\nswag.apidescription.client.13.0.5.nupkg.sha512",
+    "C:\\Users\\Macca\\.nuget\\packages\\nswag.msbuild\\13.0.5\\nswag.msbuild.13.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
