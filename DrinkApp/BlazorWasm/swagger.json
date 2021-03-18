@@ -9,7 +9,13 @@
   //},
   "paths": {
     "/search.php?s={drinkName}": {
-      "get": {
+      "
+        
+        
+        
+        
+        
+        ": {
         "tags": [
           "DrinkSearchClass"
         ],
@@ -43,7 +49,7 @@
                     "$ref": "#/components/schemas/Drink"
                   }
                 }
-                },
+              },
               "text/json": {
                 "schema": {
                   "type": "array",
@@ -51,7 +57,7 @@
                     "$ref": "#/components/schemas/Drink"
                   }
                 }
-                }
+              }
             }
           }
         }

@@ -14,13 +14,22 @@ namespace BlazorWasm
     {
         public static async Task Main(string[] args)
         {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args); 
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+
+            builder.Logging.SetMinimumLevel(LogLevel.Debug);
+            //builder.Logging.AddProvider(new ConsoleLoggerProvider());
 
             builder.Services.AddScoped(sp => new HttpClient());
 
-            await builder.Build().RunAsync();   
+            await builder.Build().RunAsync();
 
+            System.Diagnostics.Debug.WriteLine("test");
+        }
+
+        public void DebugLog(String msg)
+        {
+            System.Diagnostics.Debug.WriteLine(msg);
         }
     }
 }

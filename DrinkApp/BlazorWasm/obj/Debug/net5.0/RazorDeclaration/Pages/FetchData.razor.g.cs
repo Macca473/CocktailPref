@@ -63,28 +63,28 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #nullable disable
 #nullable restore
 #line 8 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.Extensions.Logging;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
-using BlazorWasm;
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
-using BlazorWasm.Shared;
+using BlazorWasm;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
-using Microsoft.Extensions.Logging;
+#line 11 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using BlazorWasm.Shared;
 
 #line default
 #line hidden
@@ -98,7 +98,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 35 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
     private ICollection<BlazorWasm.Drink> searchedDrinks;
@@ -111,6 +111,10 @@ using Microsoft.Extensions.Logging;
         //Page.Response.Write("<script>console.log('test');</script>");
 
         searchedDrinks = await client.GetDrinkAsync("margarita");
+
+        //Helper.DebugLog(e.Message);
+
+        System.Diagnostics.Debug.WriteLine("test");
 
     }
 
@@ -181,6 +185,7 @@ using Microsoft.Extensions.Logging;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerProvider LoggerProvider { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

@@ -1,7 +1,6 @@
-﻿@using Microsoft.Extensions.Logging
-@page "/fetchdata"
+﻿@page "/fetchdata"
 @inject HttpClient Http
-@*@inject ILoggerProvider LoggerProvider*@
+@inject ILoggerProvider LoggerProvider
 
 
 <h1>Drink Search</h1>
@@ -45,6 +44,10 @@ else
         //Page.Response.Write("<script>console.log('test');</script>");
 
         searchedDrinks = await client.GetDrinkAsync("margarita");
+
+        //Helper.DebugLog(e.Message);
+
+        System.Diagnostics.Debug.WriteLine("test");
 
     }
 
