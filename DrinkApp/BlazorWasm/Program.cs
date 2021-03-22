@@ -19,7 +19,7 @@ namespace BlazorWasm
 
             builder.Logging.SetMinimumLevel(LogLevel.Debug);
             //builder.Logging.AddProvider(new ConsoleLoggerProvider());
-
+            
             builder.Services.AddScoped(sp => new HttpClient());
 
             await builder.Build().RunAsync();
