@@ -1,7 +1,8 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
-@inject ILoggerProvider LoggerProvider
 
+@using Microsoft.Extensions.Logging;
+@inject ILoggerFactory LoggerFactory
 
 <h1>Drink Search</h1>
 
@@ -22,33 +23,33 @@ else
         </thead>
         <tbody>
             @foreach (var drink in searchedDrinks)
-                {
-                    <tr>
-                        <td>@drink.StrDrink</td>
-                        <td>@drink.StrInstructions</td>
-                    </tr>
-                }
+            {
+                <tr>
+                    <td>@drink.StrDrink</td>
+                    <td>@drink.StrInstructions</td>
+                </tr>
+            }
         </tbody>
     </table>
 }
 
 @code {
 
-    private ICollection<BlazorWasm.Drink> searchedDrinks;
+    private ICollection<BlazorWasm.Root.Drinks> searchedDrinks;
 
     protected override async Task OnInitializedAsync()
     {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        logger.LogDebug("Getting api");
 
         swaggerClient client = new("https://www.thecocktaildb.com/api/json/v1/1/", Http);
 
-        //Page.Response.Write("<script>console.log('test');</script>");
+        logger.LogDebug("Getting search: ", typeof(BlazorWasm.Root));
 
-        searchedDrinks = await client.GetDrinkAsync("margarita");
+        //searchedDrinks = await client.GetDrinkAsync("margarita");
 
-        //Helper.DebugLog(e.Message);
-
-        System.Diagnostics.Debug.WriteLine("test");
-
+        logger.LogCritical("Testing Error Logging");
     }
 
     public class JSONRoot

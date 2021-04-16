@@ -62,13 +62,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
-using Microsoft.Extensions.Logging;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
 using Microsoft.JSInterop;
 
@@ -89,6 +82,13 @@ using BlazorWasm.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
     public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,24 +98,24 @@ using BlazorWasm.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 36 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
-    private ICollection<BlazorWasm.Drink> searchedDrinks;
+    private ICollection<BlazorWasm.Root.Drinks> searchedDrinks;
 
     protected override async Task OnInitializedAsync()
     {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        logger.LogDebug("Getting api");
 
         swaggerClient client = new("https://www.thecocktaildb.com/api/json/v1/1/", Http);
 
-        //Page.Response.Write("<script>console.log('test');</script>");
+        logger.LogDebug("Getting search: ", typeof(BlazorWasm.Root));
 
-        searchedDrinks = await client.GetDrinkAsync("margarita");
+        //searchedDrinks = await client.GetDrinkAsync("margarita");
 
-        //Helper.DebugLog(e.Message);
-
-        System.Diagnostics.Debug.WriteLine("test");
-
+        logger.LogCritical("Testing Error Logging");
     }
 
     public class JSONRoot
@@ -185,7 +185,7 @@ using BlazorWasm.Shared;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerProvider LoggerProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerFactory LoggerFactory { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

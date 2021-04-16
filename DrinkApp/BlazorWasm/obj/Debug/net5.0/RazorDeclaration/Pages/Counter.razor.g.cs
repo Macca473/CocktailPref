@@ -62,13 +62,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
-using Microsoft.Extensions.Logging;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
 using Microsoft.JSInterop;
 
@@ -89,6 +82,13 @@ using BlazorWasm.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Counter.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,18 +98,22 @@ using BlazorWasm.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Counter.razor"
+#line 11 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Counter.razor"
        
     private int currentCount = 0;
 
     private void IncrementCount()
     {
+        var logger = LoggerFactory.CreateLogger<Counter>();
+        logger.LogWarning("Someone has clicked me!");
+
         currentCount++;
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerFactory LoggerFactory { get; set; }
     }
 }
 #pragma warning restore 1591
