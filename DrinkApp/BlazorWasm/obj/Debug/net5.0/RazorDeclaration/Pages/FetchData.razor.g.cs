@@ -101,7 +101,9 @@ using Microsoft.Extensions.Logging;
 #line 36 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
-    private ICollection<BlazorWasm.Root.Drinks> searchedDrinks;
+    private BlazorWasm.Root searchedDrinks;
+
+    private object testvariable;
 
     protected override async Task OnInitializedAsync()
     {
@@ -116,11 +118,19 @@ using Microsoft.Extensions.Logging;
         //searchedDrinks = await client.GetDrinkAsync("margarita");
 
         logger.LogCritical("Testing Error Logging");
+
+        BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
+
+        object testvariable = inputvar.testtask();
+
+        logger.LogDebug("Testing String: ", testvariable);
+
+
     }
 
-    public class JSONRoot
+    public class Root
     {
-
+        //public IList<Drinks>
     };
 
     public class Drinks

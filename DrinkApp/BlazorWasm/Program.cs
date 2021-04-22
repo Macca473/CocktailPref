@@ -23,8 +23,6 @@ namespace BlazorWasm
             builder.Services.AddScoped(sp => new HttpClient());
 
             await builder.Build().RunAsync();
-
-            System.Diagnostics.Debug.WriteLine("test");
         }
 
         public void DebugLog(String msg)

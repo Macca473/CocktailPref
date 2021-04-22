@@ -22,20 +22,22 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var drink in searchedDrinks)
+            @*@foreach (var drink in searchedDrinks)
             {
                 <tr>
                     <td>@drink.StrDrink</td>
                     <td>@drink.StrInstructions</td>
                 </tr>
-            }
+            }*@
         </tbody>
     </table>
 }
 
 @code {
 
-    private ICollection<BlazorWasm.Root.Drinks> searchedDrinks;
+    private BlazorWasm.Root searchedDrinks;
+
+    private object testvariable;
 
     protected override async Task OnInitializedAsync()
     {
@@ -50,11 +52,19 @@ else
         //searchedDrinks = await client.GetDrinkAsync("margarita");
 
         logger.LogCritical("Testing Error Logging");
+
+        BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
+
+        object testvariable = inputvar.testtask();
+
+        logger.LogDebug("Testing String: ", testvariable);
+
+
     }
 
-    public class JSONRoot
+    public class Root
     {
-
+        //public IList<Drinks>
     };
 
     public class Drinks
