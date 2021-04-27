@@ -53,9 +53,11 @@ else
 
         logger.LogCritical("Testing Error Logging");
 
-        BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
+        //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        object testvariable = inputvar.testtask();
+        //testvariable = inputvar.testobject;
+
+        BlazorWasm.Middleware.DrinkapiMiddleware.testobject = new object testvariable;
 
         logger.LogDebug("Testing String: ", testvariable);
 

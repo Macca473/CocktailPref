@@ -121,7 +121,7 @@ using Microsoft.Extensions.Logging;
 
         BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        object testvariable = inputvar.testtask();
+        testvariable = inputvar.testtask();
 
         logger.LogDebug("Testing String: ", testvariable);
 
