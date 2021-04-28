@@ -55,9 +55,11 @@ else
 
         //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        //testvariable = inputvar.testobject;
+        type inputvar;
 
-        BlazorWasm.Middleware.DrinkapiMiddleware.testobject = new object testvariable;
+        BlazorWasm.Middleware.DrinkapiMiddleware inputvar;
+
+        testvariable = inputvar.Testtask();
 
         logger.LogDebug("Testing String: ", testvariable);
 
