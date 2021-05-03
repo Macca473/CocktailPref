@@ -37,7 +37,7 @@ else
 
     private BlazorWasm.Root searchedDrinks;
 
-    private object testvariable;
+    public object testvariable;
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,15 +55,13 @@ else
 
         //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        type inputvar;
+        BlazorWasm.Middleware.DrinkapiMiddleware testObject;
 
-        BlazorWasm.Middleware.DrinkapiMiddleware inputvar;
+        testObject = new();
 
-        testvariable = inputvar.Testtask();
+        testvariable = testObject.Testtask();
 
         logger.LogDebug("Testing String: ", testvariable);
-
-
     }
 
     public class Root

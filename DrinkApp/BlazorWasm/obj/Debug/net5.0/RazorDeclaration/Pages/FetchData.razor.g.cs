@@ -103,7 +103,7 @@ using Microsoft.Extensions.Logging;
 
     private BlazorWasm.Root searchedDrinks;
 
-    private object testvariable;
+    public object testvariable;
 
     protected override async Task OnInitializedAsync()
     {
@@ -119,13 +119,15 @@ using Microsoft.Extensions.Logging;
 
         logger.LogCritical("Testing Error Logging");
 
-        BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
+        //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        testvariable = inputvar.testtask();
+        BlazorWasm.Middleware.DrinkapiMiddleware testObject;
+
+        testObject = new();
+
+        testvariable = testObject.Testtask();
 
         logger.LogDebug("Testing String: ", testvariable);
-
-
     }
 
     public class Root

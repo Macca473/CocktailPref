@@ -9,16 +9,20 @@ namespace BlazorWasm.Middleware
 {
     public class DrinkapiMiddleware
     {
-        private object testObject;
+        //public object testObject;
 
-        public class TestObject
+        public partial class TestObject
         {
-            public static string Teststring = "Teststring";
+            public string Testarg { get; set; }
         }
 
         public object Testtask()
         {
-            return testObject;
+            TestObject obj = new();
+
+            obj.Testarg = "teststring";
+
+            return obj;
         }
 
         //public void SetTestObject(object value)
