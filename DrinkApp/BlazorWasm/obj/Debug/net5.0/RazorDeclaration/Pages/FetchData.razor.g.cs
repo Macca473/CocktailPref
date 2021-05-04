@@ -121,13 +121,11 @@ using Microsoft.Extensions.Logging;
 
         //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
 
-        BlazorWasm.Middleware.DrinkapiMiddleware testObject;
-
-        testObject = new();
+        BlazorWasm.Middleware.DrinkapiMiddleware testObject = new();
 
         testvariable = testObject.Testtask();
 
-        logger.LogDebug("Testing String: ", testvariable);
+        logger.LogDebug("Testing String: ", testObject.Testtask());
     }
 
     public class Root
