@@ -39,13 +39,6 @@ namespace BlazorWasm.Middleware
 
         //    return obj;
         //}
-
-        //public string testtask()
-        //{
-        //    string teststring = "teststring";
-        //    return teststring;
-        //}
-
     }
 
 }
