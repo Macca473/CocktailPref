@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorWasm.Models
 {
-    public partial class TestObject
+     public partial class TestObject
     {
         public string Teststr { get; set; }
     }

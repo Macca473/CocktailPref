@@ -98,35 +98,53 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 39 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
-    private BlazorWasm.Root searchedDrinks;
+    //private BlazorWasm.Root searchedDrinks;
 
-    public object testvariable;
+    private Models.TestObject Tobj = new();
+
+    //public string testvariable;
 
     protected override async Task OnInitializedAsync()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        logger.LogDebug("Getting api");
+        string testvariable;
 
-        swaggerClient client = new("https://www.thecocktaildb.com/api/json/v1/1/", Http);
+        //static async Task addteststring(string value)
+        //{
+        //    await value = "test string";
+        //}
 
-        logger.LogDebug("Getting search: ", typeof(BlazorWasm.Root));
+        new Models.TestObject { Teststr = "Teststring" };
 
-        //searchedDrinks = await client.GetDrinkAsync("margarita");
-
-        logger.LogCritical("Testing Error Logging");
-
-        //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
-
-        BlazorWasm.Controllers.DrinksAPIController testObject = new();
-
-        //testvariable = testObject.Testtask();
-
-        logger.LogDebug("Testing String: ", testvariable);
+        //logger.LogDebug("Testing String: ", testvariable);
     }
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+    //    logger.LogDebug("Getting api");
+
+    //    swaggerClient client = new("https://www.thecocktaildb.com/api/json/v1/1/", Http);
+
+    //    logger.LogDebug("Getting search: ", typeof(BlazorWasm.Root));
+
+    //    //searchedDrinks = await client.GetDrinkAsync("margarita");
+
+    //    logger.LogCritical("Testing Error Logging");
+
+    //    //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
+
+    //    testvariable = "Teststring";
+
+    //    Tobj.Teststr = testvariable;
+
+    //    logger.LogDebug("Testing String: ", testvariable);
+    //}
 
 
 
