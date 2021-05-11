@@ -40,7 +40,9 @@ else
 
     //private BlazorWasm.Root searchedDrinks;
 
-    private Models.TestObject Tobj = new();
+    private object Tobj;
+
+    //Models.TestModel object Tobj = new();
 
     //public string testvariable;
 
@@ -48,16 +50,9 @@ else
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        string testvariable;
+        Controllers.DrinksAPIController client = new();
 
-        //static async Task addteststring(string value)
-        //{
-        //    await value = "test string";
-        //}
-
-        await new Models.TestObject { Teststr = "Teststring" };
-
-        //logger.LogDebug("Testing String: ", testvariable);
+        Tobj = await client.Testtask();
     }
 
     //protected override async Task OnInitializedAsync()

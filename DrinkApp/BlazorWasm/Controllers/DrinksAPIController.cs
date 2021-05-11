@@ -14,14 +14,18 @@ namespace BlazorWasm.Controllers
 
     public class DrinksAPIController : ControllerBase
     {
-        //public object Testtask()
-        //{
-        //    //TestObject obj = new();
+        public async Task<object> Testtask()
+        {
+            Models.TestModel LocalVarTestModel = new();
 
-        //    //obj.Testarg = "teststring";
+            var myTask = Task.Run(() => (System.IO.File.ReadAllText(@"D:\dotNetStuff\TestTxt.txt")));
 
-        //    //return obj;
-        //}
+            string Getstringtest = await myTask;
+
+            LocalVarTestModel.Teststr = Getstringtest;
+
+            return LocalVarTestModel;
+        }
     }
 
 
