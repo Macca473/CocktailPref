@@ -103,7 +103,9 @@ using Microsoft.Extensions.Logging;
 
     //private BlazorWasm.Root searchedDrinks;
 
-    private Models.TestObject Tobj = new();
+    private object Tobj;
+
+    //Models.TestModel object Tobj = new();
 
     //public string testvariable;
 
@@ -111,16 +113,13 @@ using Microsoft.Extensions.Logging;
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        string testvariable;
+        logger.LogDebug("On Initialized Async");
 
-        //static async Task addteststring(string value)
-        //{
-        //    await value = "test string";
-        //}
+        Controllers.DrinksAPIController client = new();
 
-        new Models.TestObject { Teststr = "Teststring" };
+        Tobj = await client.Testtask();
 
-        //logger.LogDebug("Testing String: ", testvariable);
+        logger.LogDebug("Getting Object: ", Tobj);
     }
 
     //protected override async Task OnInitializedAsync()

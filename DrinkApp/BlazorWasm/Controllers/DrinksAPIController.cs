@@ -18,7 +18,11 @@ namespace BlazorWasm.Controllers
         {
             Models.TestModel LocalVarTestModel = new();
 
-            var myTask = Task.Run(() => (System.IO.File.ReadAllText(@"D:\dotNetStuff\TestTxt.txt")));
+            var myTask = Task.Run(() =>
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "\\fileName.txt")
+
+            System.IO.File.ReadAllText(path: @"d:\dotNetStuff\TestTxt.txt"));
 
             string Getstringtest = await myTask;
 
