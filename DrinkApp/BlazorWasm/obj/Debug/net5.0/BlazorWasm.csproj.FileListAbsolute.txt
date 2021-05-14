@@ -990,3 +990,5 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\BlazorWasm.dll
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\ref\BlazorWasm.dll
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\BlazorWasm.pdb
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\Controllers\DrinksAPIController.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\Controllers\TestTxt.txt
