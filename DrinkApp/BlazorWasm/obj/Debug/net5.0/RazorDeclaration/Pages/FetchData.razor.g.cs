@@ -115,9 +115,9 @@ using Microsoft.Extensions.Logging;
 
         logger.LogDebug("On Initialized Async");
 
-        Controllers.DrinksAPIController client = new();
+        Controllers.DrinksAPIController controller = new();
 
-        Tobj = await client.Testtask();
+        Tobj = await controller.Testtask();
 
         logger.LogDebug("Getting Object: ", Tobj);
     }

@@ -35,7 +35,18 @@ namespace BlazorWasm.Controllers
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Body: ", body);
+
+                    if (body == null)
+                    {
+                        Console.WriteLine("body is null");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("body is not null");
+                        Console.WriteLine("Body: ", body);
+                    }
+                    
                 }
 
                 return drinksapi;

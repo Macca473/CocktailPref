@@ -20,21 +20,41 @@ namespace BlazorWasm.Controllers
         {
             Models.TestModel LocalVarTestModel = new();
 
-            var client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage
+            async Task<string> GetSearch(string drink) 
+            {
+                string drinksapi = "test";
+
+                var client = new HttpClient();
+                HttpRequestMessage request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Get,
                     RequestUri = new Uri("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka")
-                    };
-            
-                    using (var response = await client.SendAsync(request))
+                };
+
+                using (var response = await client.SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var body = await response.Content.ReadAsStringAsync();
+
+                    if (body == null)
                     {
-                        response.EnsureSuccessStatusCode();
-                        var body = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine("body is null");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("body is not null");
                         Console.WriteLine("Body: ", body);
+                    }
+                    
                 }
 
-            var myTask = Task.Run(() => System.IO.File.ReadAllText(path: @"D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Controllers\TestTxt.txt"));
+                return drinksapi;
+            };
+
+
+
+            var myTask = Task.Run(() => (GetSearch("drink")));
 
 
 
