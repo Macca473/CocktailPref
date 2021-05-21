@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BlazorWasm.Controllers
 {
@@ -16,16 +17,14 @@ namespace BlazorWasm.Controllers
 
     public class DrinksAPIController : ControllerBase
     {
-
-        public string teststring = "teststring";
-
         public async Task<object> Testtask()
         {
                 Models.IEnumerable<Root> DrinksModel = new();
+                string teststring = "teststring";
 
-                Console.WriteLine("start of task: ", teststring);
+                Console.WriteLine("start of task: " + teststring);
 
-                var client = new HttpClient();
+                using var client = new HttpClient();
 
                 HttpResponseMessage response = await client.GetAsync("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka");
 
@@ -33,9 +32,11 @@ namespace BlazorWasm.Controllers
 
                 string Body = await response.Content.ReadAsStringAsync();
 
+                object BodyJSON = JsonConvert.DeserializeObject<object>(Body);
+
                 
 
-                    if (Body == null)
+                   if (Body == null)
                     {
                         Console.WriteLine("body is null");
                     }
@@ -43,12 +44,13 @@ namespace BlazorWasm.Controllers
                     else
                     {
                         Console.WriteLine("body is not null");
-                        Console.WriteLine("Body: ", teststring);
+                        Console.WriteLine("Body: " + BodyJSON);
+                        Console.WriteLine("Res: " + response.StatusCode);
 
-                        //object FullDrinksQurery = DrinksModel.Append(body);
-                    }
+                //object FullDrinksQurery = DrinksModel.Append(body);
+            }
 
-            Console.WriteLine("end of task: ", teststring);
+            Console.WriteLine("end of task: " + teststring);
 
             return DrinksModel;
 
