@@ -19,7 +19,8 @@ namespace BlazorWasm.Controllers
     {
         public async Task<object> Testtask()
         {
-                Models.IEnumerable<Root> DrinksModel = new();
+                Models.Drinks DrinksModel = new();
+
                 string teststring = "teststring";
 
                 Console.WriteLine("start of task: " + teststring);
@@ -32,9 +33,11 @@ namespace BlazorWasm.Controllers
 
                 string Body = await response.Content.ReadAsStringAsync();
 
-                object BodyJSON = JsonConvert.DeserializeObject<object>(Body);
+                Models.Drinks BodyJSON = JsonConvert.DeserializeObject<Models.Drinks>(Body);
 
-                   if (Body == null)
+                //JsonConvert.PopulateObject(Body, DrinksModel);
+
+            if (Body == null)
                     {
                         Console.WriteLine("body is null");
                     }

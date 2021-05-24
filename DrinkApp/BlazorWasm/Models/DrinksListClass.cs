@@ -10,7 +10,7 @@ namespace BlazorWasm.Models
         public string Teststr { get; set; }
     }
 
-    public class IEnumerable<Root>
+    public partial class Drinks
     {
         public class IList<Drinks>
         {
