@@ -8,6 +8,13 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 @if (Tobj == null)
 {
     <p><em>Loading...</em></p>
@@ -15,36 +22,32 @@
 else
 
 {
-    @*<h3>@Tobj.Teststr</h3>*@
-    <!--<table class="table">
+    @*<h3>@Tobj.drinks[0].strDrink</h3>*@
+    <table class="table">
         <thead>
             <tr>
                 <th>strDrink</th>
                 <th>strInstructions</th>
             </tr>
         </thead>
-        <tbody>-->
-    @*@foreach (var drink in searchedDrinks)
+        <tbody>
+    @foreach (var drink in Tobj.drinks)
         {
             <tr>
-                <td>@drink.StrDrink</td>
-                <td>@drink.StrInstructions</td>
+                <td>@drink.strDrink</td>
+                <td>@drink.strInstructions</td>
             </tr>
-        }*@
+        }
 
-    <!--</tbody>
-    </table>-->
+    </tbody>
+    </table>
 }
 
 @code {
 
-    //private BlazorWasm.Root searchedDrinks;
+    private Models.Root Tobj;
 
-    private object Tobj;
-
-    //Models.TestModel object Tobj = new();
-
-    //public string testvariable;
+    public string SearchString;
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,9 +57,9 @@ else
 
         Controllers.DrinksAPIController controller = new();
 
-        Tobj = await controller.Testtask();
+        Tobj = await controller.Testtask(SearchString);
 
-        logger.LogDebug("Getting Object: ", Tobj);
+        logger.LogDebug("Getting Object: " + Tobj.drinks[0].strDrink );
     }
 
     //protected override async Task OnInitializedAsync()

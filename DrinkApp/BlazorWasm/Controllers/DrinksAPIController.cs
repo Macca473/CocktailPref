@@ -17,9 +17,9 @@ namespace BlazorWasm.Controllers
 
     public class DrinksAPIController : ControllerBase
     {
-        public async Task<object> Testtask()
+        public async Task<Models.Root> Testtask(string SearchOption)
         {
-                Models.Drinks DrinksModel = new();
+                //Models.Root DrinksModel = new();
 
                 string teststring = "teststring";
 
@@ -27,15 +27,17 @@ namespace BlazorWasm.Controllers
 
                 using var client = new HttpClient();
 
-                HttpResponseMessage response = await client.GetAsync("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka");
+                HttpResponseMessage response = await client.GetAsync("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + SearchOption);
 
                 response.EnsureSuccessStatusCode();
 
                 string Body = await response.Content.ReadAsStringAsync();
 
-                Models.Drinks BodyJSON = JsonConvert.DeserializeObject<Models.Drinks>(Body);
+            object BodyJSONobj = JsonConvert.DeserializeObject(Body);
 
-                //JsonConvert.PopulateObject(Body, DrinksModel);
+            Models.Root BodyJSONmdl = JsonConvert.DeserializeObject<Models.Root>(Body);
+
+            //JsonConvert.PopulateObject(Body, DrinksModel);
 
             if (Body == null)
                     {
@@ -45,7 +47,8 @@ namespace BlazorWasm.Controllers
                     else
                     {
                         Console.WriteLine("body is not null");
-                        Console.WriteLine("Body: " + BodyJSON);
+                        //Console.WriteLine("Body: " + BodyJSONmdl.drinks[0].strDrink);
+                        //Console.WriteLine("Body Object: " + BodyJSONobj);
                         Console.WriteLine("Res: " + response.StatusCode);
 
                 //object FullDrinksQurery = DrinksModel.Append(body);
@@ -53,7 +56,7 @@ namespace BlazorWasm.Controllers
 
             Console.WriteLine("end of task: " + teststring);
 
-            return DrinksModel;
+            return BodyJSONmdl;
 
             }
 
