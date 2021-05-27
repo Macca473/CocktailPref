@@ -105,42 +105,31 @@ using Microsoft.Extensions.Logging;
 
     public string SearchString;
 
-    protected override async Task OnInitializedAsync()
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+    //    logger.LogDebug("On Initialized Async");
+
+    //    Controllers.DrinksAPIController controller = new();
+
+    //    Tobj = await controller.Testtask(SearchString);
+
+    //    logger.LogDebug("Getting Object");
+    //}
+
+    protected async Task UpdateSearch()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        logger.LogDebug("On Initialized Async");
+        logger.LogDebug("UpdateSearch: " + SearchString);
 
         Controllers.DrinksAPIController controller = new();
 
         Tobj = await controller.Testtask(SearchString);
 
-        logger.LogDebug("Getting Object: " + Tobj.drinks[0].strDrink );
+        logger.LogDebug("Getting Object");
     }
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-    //    logger.LogDebug("Getting api");
-
-    //    swaggerClient client = new("https://www.thecocktaildb.com/api/json/v1/1/", Http);
-
-    //    logger.LogDebug("Getting search: ", typeof(BlazorWasm.Root));
-
-    //    //searchedDrinks = await client.GetDrinkAsync("margarita");
-
-    //    logger.LogCritical("Testing Error Logging");
-
-    //    //BlazorWasm.Middleware.DrinkapiMiddleware inputvar = null;
-
-    //    testvariable = "Teststring";
-
-    //    Tobj.Teststr = testvariable;
-
-    //    logger.LogDebug("Testing String: ", testvariable);
-    //}
-
 
 
 #line default
