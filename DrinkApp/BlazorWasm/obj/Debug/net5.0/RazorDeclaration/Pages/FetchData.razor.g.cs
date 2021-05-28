@@ -98,12 +98,14 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 54 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
     private Models.Root Tobj;
 
     public string SearchString;
+
+    public bool AlcoholicBool;
 
     //protected override async Task OnInitializedAsync()
     //{
@@ -126,7 +128,7 @@ using Microsoft.Extensions.Logging;
 
         Controllers.DrinksAPIController controller = new();
 
-        Tobj = await controller.Testtask(SearchString);
+        Tobj = await controller.Testtask(SearchString, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
     }

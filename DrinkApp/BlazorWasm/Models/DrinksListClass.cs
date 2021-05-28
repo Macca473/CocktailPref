@@ -10,7 +10,7 @@ namespace BlazorWasm.Models
         public string Teststr { get; set; }
     }
 
-    public partial class Root
+    public class Root
     {
         public List<Drinks> drinks { get; set; }
     }

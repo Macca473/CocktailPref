@@ -12,6 +12,7 @@
     <p>
         Title: <input type="text" @bind="SearchString" />
         <input type="button" value="Filter" @onclick="UpdateSearch" />
+        <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool">
     </p>
 </form>
 
@@ -33,15 +34,17 @@ else
             <tr>
                 <th>strDrink</th>
                 <th>strInstructions</th>
+                <th>Alcoholic?</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var drink in Tobj.drinks)
             {
-                <tr>
-                    <td>@drink.strDrink</td>
-                    <td>@drink.strInstructions</td>
-                </tr>
+            <tr>
+                <td>@drink.strDrink</td>
+                <td>@drink.strInstructions</td>
+                <td>@drink.strAlcoholic</td>
+            </tr>
             }
 
         </tbody>
@@ -53,6 +56,8 @@ else
     private Models.Root Tobj;
 
     public string SearchString;
+
+    public bool AlcoholicBool;
 
     //protected override async Task OnInitializedAsync()
     //{
@@ -75,7 +80,7 @@ else
 
         Controllers.DrinksAPIController controller = new();
 
-        Tobj = await controller.Testtask(SearchString);
+        Tobj = await controller.Testtask(SearchString, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
     }

@@ -17,7 +17,8 @@ namespace BlazorWasm.Controllers
 
     public class DrinksAPIController : ControllerBase
     {
-        public async Task<Models.Root> Testtask(string SearchOption)
+
+        public async Task<Models.Root> Testtask(string SearchOption, bool AlcoholicBool)
         {
                 //Models.Root DrinksModel = new();
 
@@ -48,9 +49,36 @@ namespace BlazorWasm.Controllers
                     else
                     {
                         Console.WriteLine("body is not null");
-                        //Console.WriteLine("Body: " + BodyJSONmdl.drinks[0].strDrink);
+                        Console.WriteLine("Body: " + BodyJSONmdl.drinks.Count);
                         //Console.WriteLine("Body Object: " + BodyJSONobj);
                         Console.WriteLine("Res: " + response.StatusCode);
+            }
+
+            //foreach (var element in BodyJSONmdl.drinks)
+            //{
+            //    Console.WriteLine("Drink Alcoholic?: " + element.strAlcoholic);
+
+            //    if (element.strAlcoholic == "Alcoholic")
+            //    {
+            //        element = null;
+            //    }
+            //} 
+
+            if (AlcoholicBool == false)
+            {
+                for (int element = BodyJSONmdl.drinks.Count - 1; element >= 0; --element)
+                {
+
+                    if (BodyJSONmdl.drinks[element].strAlcoholic == "Alcoholic")
+                    {
+                        BodyJSONmdl.drinks.RemoveAt(element);
+
+                        Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is removed");
+                    }
+
+                    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is " + BodyJSONmdl.drinks[element].strAlcoholic);
+
+                }
             }
 
             Console.WriteLine("end of task: " + teststring);
