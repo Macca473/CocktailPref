@@ -39,9 +39,10 @@ namespace BlazorWasm.Controllers
 
             //JsonConvert.PopulateObject(Body, DrinksModel);
 
-            if (Body == null)
+            if (BodyJSONmdl.drinks == null)
                     {
                         Console.WriteLine("body is null");
+                        
                     }
 
                     else

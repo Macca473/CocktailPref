@@ -33,15 +33,16 @@ namespace BlazorWasm.Controllers
 
                 string Body = await response.Content.ReadAsStringAsync();
 
-            object BodyJSONobj = JsonConvert.DeserializeObject(Body);
+                object BodyJSONobj = JsonConvert.DeserializeObject(Body);
 
-            Models.Root BodyJSONmdl = JsonConvert.DeserializeObject<Models.Root>(Body);
+                Models.Root BodyJSONmdl = JsonConvert.DeserializeObject<Models.Root>(Body);
 
             //JsonConvert.PopulateObject(Body, DrinksModel);
 
-            if (Body == null)
+            if (BodyJSONmdl.drinks == null)
                     {
                         Console.WriteLine("body is null");
+                        
                     }
 
                     else
@@ -50,8 +51,6 @@ namespace BlazorWasm.Controllers
                         //Console.WriteLine("Body: " + BodyJSONmdl.drinks[0].strDrink);
                         //Console.WriteLine("Body Object: " + BodyJSONobj);
                         Console.WriteLine("Res: " + response.StatusCode);
-
-                //object FullDrinksQurery = DrinksModel.Append(body);
             }
 
             Console.WriteLine("end of task: " + teststring);

@@ -11,13 +11,18 @@
 <form>
     <p>
         Title: <input type="text" @bind="SearchString" />
-        <input type="button" value="Filter" @onclick="UpdateSearch"/>
+        <input type="button" value="Filter" @onclick="UpdateSearch" />
     </p>
 </form>
-w
+
 @if (Tobj == null)
 {
     <p><em>Loading...</em></p>
+}
+
+else if (Tobj.drinks == null)
+{
+    <p><em>What is '@SearchString'?</em></p>
 }
 else
 
