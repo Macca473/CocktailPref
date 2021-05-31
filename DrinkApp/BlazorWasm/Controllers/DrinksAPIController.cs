@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace BlazorWasm.Controllers
 {
@@ -18,27 +15,15 @@ namespace BlazorWasm.Controllers
     public class DrinksAPIController : ControllerBase
     {
 
-        public async Task<Models.Root> Testtask(string SearchOption, bool AlcoholicBool)
+        public async Task<Models.Root> SearchControllor(string SearchOption, string IngFilter, bool AlcoholicBool)
         {
                 //Models.Root DrinksModel = new();
 
-                string teststring = "teststring";
+                Console.WriteLine("start of task");
 
-                Console.WriteLine("start of task: " + teststring);
+                Controllers.GETDrinksController controller = new();
 
-                using var client = new HttpClient();
-
-                HttpResponseMessage response = await client.GetAsync("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + SearchOption);
-
-                response.EnsureSuccessStatusCode();
-
-                string Body = await response.Content.ReadAsStringAsync();
-
-                object BodyJSONobj = JsonConvert.DeserializeObject(Body);
-
-                Models.Root BodyJSONmdl = JsonConvert.DeserializeObject<Models.Root>(Body);
-
-            //JsonConvert.PopulateObject(Body, DrinksModel);
+                Models.Root BodyJSONmdl = await controller.GETDrinks(0, SearchOption);
 
             if (BodyJSONmdl.drinks == null)
                     {
@@ -50,19 +35,31 @@ namespace BlazorWasm.Controllers
                     {
                         Console.WriteLine("body is not null");
                         Console.WriteLine("Body: " + BodyJSONmdl.drinks.Count);
-                        //Console.WriteLine("Body Object: " + BodyJSONobj);
-                        Console.WriteLine("Res: " + response.StatusCode);
             }
 
-            //foreach (var element in BodyJSONmdl.drinks)
-            //{
-            //    Console.WriteLine("Drink Alcoholic?: " + element.strAlcoholic);
+            if (SearchOption == "")
 
-            //    if (element.strAlcoholic == "Alcoholic")
-            //    {
-            //        element = null;
-            //    }
-            //} 
+            {
+
+                    for (int element = BodyJSONmdl.drinks.Count - 1; element >= 0; --element)
+                    {
+
+                        if (BodyJSONmdl.drinks[element].strAlcoholic == "Alcoholic")
+                        {
+                            BodyJSONmdl.drinks.RemoveAt(element);
+
+                            Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is removed");
+                        }
+
+                        Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is " + BodyJSONmdl.drinks[element].strAlcoholic);
+
+                    }
+            }
+
+            else
+            {
+
+            }
 
             if (AlcoholicBool == false)
             {
@@ -81,7 +78,7 @@ namespace BlazorWasm.Controllers
                 }
             }
 
-            Console.WriteLine("end of task: " + teststring);
+            Console.WriteLine("end of task");
 
             return BodyJSONmdl;
 

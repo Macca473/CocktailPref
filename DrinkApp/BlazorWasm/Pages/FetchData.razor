@@ -10,9 +10,10 @@
 
 <form>
     <p>
-        Title: <input type="text" @bind="SearchString" />
-        <input type="button" value="Filter" @onclick="UpdateSearch" />
+        Drink: <input type="text" @bind="SearchString" />
+        Ingredient: <input type="text" @bind="IngFilter" />
         <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool">
+        <input type="button" value="Filter" @onclick="UpdateSearch" />
     </p>
 </form>
 
@@ -57,6 +58,8 @@ else
 
     public string SearchString;
 
+    public string IngFilter;
+
     public bool AlcoholicBool;
 
     //protected override async Task OnInitializedAsync()
@@ -80,7 +83,7 @@ else
 
         Controllers.DrinksAPIController controller = new();
 
-        Tobj = await controller.Testtask(SearchString, AlcoholicBool);
+        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
     }
