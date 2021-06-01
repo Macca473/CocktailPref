@@ -13,7 +13,9 @@ namespace BlazorWasm.Controllers
     {
         public async Task<Models.Root> GETDrinks(int searchType, string searchOption)
         {
-            string[] searchTypeList = {"search.php?s=","filter.php?i="};
+            string[] searchTypeList = {"search.php?s=","filter.php?i=","lookup.php?i="};
+
+            //0:drinkname 1:ingredient 2:ID
 
             using var client = new HttpClient();
 
@@ -28,8 +30,6 @@ namespace BlazorWasm.Controllers
             Models.Root BodyJSONmdl = JsonConvert.DeserializeObject<Models.Root>(Body);
 
             Console.WriteLine("Res: " + response.StatusCode);
-
-            Console.WriteLine("GETDrinksBody: " + BodyJSONmdl);
 
             return BodyJSONmdl;
         }

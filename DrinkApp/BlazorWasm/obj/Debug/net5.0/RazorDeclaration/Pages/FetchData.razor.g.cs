@@ -98,7 +98,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 59 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
        
 
     private Models.Root Tobj;
@@ -108,6 +108,8 @@ using Microsoft.Extensions.Logging;
     public string IngFilter;
 
     public bool AlcoholicBool;
+
+    private List<Models.IngredientList> IngredientList;
 
     //protected override async Task OnInitializedAsync()
     //{

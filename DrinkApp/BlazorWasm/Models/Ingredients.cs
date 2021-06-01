@@ -7,8 +7,8 @@ namespace BlazorWasm.Models
 {
     class IngredientList
     {
-            string[] Ingredients =
-            {
+        string[] Ingredients =
+        {
             "Light rum",
             "Applejack",
             "Gin",

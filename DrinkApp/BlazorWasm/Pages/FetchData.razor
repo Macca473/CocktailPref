@@ -2,6 +2,8 @@
 @inject HttpClient Http
 
 @using Microsoft.Extensions.Logging;
+
+
 @inject ILoggerFactory LoggerFactory
 
 <h1>Drink Search</h1>
@@ -41,11 +43,11 @@ else
         <tbody>
             @foreach (var drink in Tobj.drinks)
             {
-            <tr>
-                <td>@drink.strDrink</td>
-                <td>@drink.strInstructions</td>
-                <td>@drink.strAlcoholic</td>
-            </tr>
+                <tr>
+                    <td>@drink.strDrink</td>
+                    <td>@drink.strInstructions</td>
+                    <td>@drink.strAlcoholic</td>
+                </tr>
             }
 
         </tbody>
@@ -61,6 +63,8 @@ else
     public string IngFilter;
 
     public bool AlcoholicBool;
+
+    private List<Models.IngredientList> IngredientList;
 
     //protected override async Task OnInitializedAsync()
     //{
