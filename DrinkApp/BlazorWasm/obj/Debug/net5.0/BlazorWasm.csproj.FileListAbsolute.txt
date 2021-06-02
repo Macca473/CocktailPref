@@ -992,3 +992,6 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\BlazorWasm.pdb
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\Controllers\DrinksAPIController.cs
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\Controllers\TestTxt.txt
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Blazored.Typeahead.dll.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Blazored.Typeahead.dll
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\6DqPdQqG.gz

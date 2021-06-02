@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace BlazorWasm.Models
 {
-    class IngredientList
+    class IngredientList 
     {
-        string[] Ingredients =
+
+        public List<string> GetIngredients()
         {
+            var Ingredients = new List<string>()
+            {
             "Light rum",
             "Applejack",
             "Gin",
@@ -107,6 +110,10 @@ namespace BlazorWasm.Models
             "Creme de Cassis"
             };
 
+            return Ingredients;
+        }
+
+        
     }
 
 

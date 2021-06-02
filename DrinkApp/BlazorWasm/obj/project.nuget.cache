@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/JbK+KTaHfz9DdEa01PSgoPGI1Wsi1OGmAkAdfOkzySQ/0tl1tFQDO62Pn+b8EbuMPmAR3YVv/af8F9M6124qg==",
+  "dgSpecHash": "rW8dJBXTj+5SvrYALaT4kTtBnrusKU0Rm3QkLFWyEAI7PEpbC7qINUyb3fxgYlX5suB4S3FhCwb2aNKG5ZCd2A==",
   "success": true,
   "projectFilePath": "D:\\dotNetStuff\\CocktailPrefRepo\\CocktailPref\\DrinkApp\\BlazorWasm\\BlazorWasm.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Macca\\.nuget\\packages\\blazored.typeahead\\4.6.0\\blazored.typeahead.4.6.0.nupkg.sha512",
     "C:\\Users\\Macca\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Macca\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Macca\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

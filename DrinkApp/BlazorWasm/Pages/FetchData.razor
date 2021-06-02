@@ -2,6 +2,9 @@
 @inject HttpClient Http
 
 @using Microsoft.Extensions.Logging;
+@using Blazored.Typeahead;
+@*@using AutoCompleteBlazor.Data;
+    @using AutoCompleteBlazor.Services;*@
 
 
 @inject ILoggerFactory LoggerFactory
@@ -13,84 +16,140 @@
 <form>
     <p>
         Drink: <input type="text" @bind="SearchString" />
-        Ingredient: <input type="text" @bind="IngFilter" />
-        <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool">
-        <input type="button" value="Filter" @onclick="UpdateSearch" />
-    </p>
-</form>
-
-@if (Tobj == null)
-{
-    <p><em>Loading...</em></p>
-}
-
-else if (Tobj.drinks == null)
-{
-    <p><em>What is '@SearchString'?</em></p>
-}
-else
-
-{
-    @*<h3>@Tobj.drinks[0].strDrink</h3>*@
-    <table class="table">
-        <thead>
-            <tr>
-                <th>strDrink</th>
-                <th>strInstructions</th>
-                <th>Alcoholic?</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var drink in Tobj.drinks)
+        Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter"/>
+        @if (IngredientList == null)
+        { }
+        else
+        {
+            @foreach (var Ingredient in IngredientList)
             {
-                <tr>
-                    <td>@drink.strDrink</td>
-                    <td>@drink.strInstructions</td>
-                    <td>@drink.strAlcoholic</td>
-                </tr>
-            }
+            <p>@Ingredient</p>
+        }
+        }
 
-        </tbody>
-    </table>
-}
+        <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
+        <input type="button" value="Filter" @onclick="UpdateSearch" />
+        </p>
+    </form>
 
-@code {
-
-    private Models.Root Tobj;
-
-    public string SearchString;
-
-    public string IngFilter;
-
-    public bool AlcoholicBool;
-
-    private List<Models.IngredientList> IngredientList;
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-    //    logger.LogDebug("On Initialized Async");
-
-    //    Controllers.DrinksAPIController controller = new();
-
-    //    Tobj = await controller.Testtask(SearchString);
-
-    //    logger.LogDebug("Getting Object");
-    //}
-
-    protected async Task UpdateSearch()
+    @if (Tobj == null)
     {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("UpdateSearch: " + SearchString);
-
-        Controllers.DrinksAPIController controller = new();
-
-        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-        logger.LogDebug("Getting Object");
+        <p><em>Loading...</em></p>
     }
 
-}
+    else if (Tobj.drinks == null)
+    {
+        <p><em>What is '@SearchString'?</em></p>
 
+    }
+    else
+
+    {
+        @*<h3>@Tobj.drinks[0].strDrink</h3>*@
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>strDrink</th>
+                    <th>strInstructions</th>
+                    <th>Alcoholic?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var drink in Tobj.drinks)
+                {
+                    <tr>
+                        <td>@drink.strDrink</td>
+                        <td>@drink.strInstructions</td>
+                        <td>@drink.strAlcoholic</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+
+    @code {
+
+        private Models.Root Tobj;
+
+        public string SearchString;
+
+        public string IngFilter;
+
+        public bool AlcoholicBool;
+
+        private List<String> IngredientList;
+
+        //async Task<IEnumerable<String>> Autocomplete(string IngFilter)
+        //{
+        //    return await Task
+        //        .FromResult(IngredientList.Where(ing => ing.ToLower().Contains(IngFilter.ToLower())));
+        //}
+
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        //    logger.LogDebug("On Initialized Async");
+
+        //    Controllers.DrinksAPIController controller = new();
+
+        //    Tobj = await controller.Testtask(SearchString);
+
+        //    logger.LogDebug("Getting Object");
+        //}
+
+        protected async Task UpdateSearch()
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            logger.LogDebug("UpdateSearch: " + SearchString);
+
+            Controllers.DrinksAPIController controller = new();
+
+            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
+
+            logger.LogDebug("Getting Object");
+        }
+
+        private void Autocomplete()
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            Models.IngredientList GetingredientList = new();
+
+            IngredientList = GetingredientList.GetIngredients();
+
+            logger.LogDebug("IngFilter: " + IngFilter);
+
+            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+            {
+                if (IngredientList[Ingredientindex].Contains(this.IngFilter))
+                {
+                    IngredientList.RemoveAt(Ingredientindex);
+                }
+            }
+        }
+
+        private void filtering(ChangeEventArgs IngInput)
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            Models.IngredientList GetingredientList = new();
+
+            IngredientList = GetingredientList.GetIngredients();
+
+            logger.LogDebug("IngFilter: " + IngInput.Value.ToString());
+
+            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+            {
+                if (IngredientList[Ingredientindex].Contains(IngInput.Value.ToString()))
+                { }
+                else
+                {
+                    IngredientList.RemoveAt(Ingredientindex);
+                }
+            }
+        }
+
+    }
