@@ -1,6 +1,7 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
 
+
 @using Microsoft.Extensions.Logging;
 @using Blazored.Typeahead;
 @*@using AutoCompleteBlazor.Data;
@@ -9,138 +10,134 @@
 
 @inject ILoggerFactory LoggerFactory
 
+
+
+
 <h1>Drink Search</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
-
-<form>
-    <p>
-        Drink: <input type="text" @bind="SearchString" />
-        Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter"/>
+<div class="container-fluid, row">
+    <form>
+        <div class="col-1, tmp">
+            Drink: <input type="text" @bind="SearchString" />
+        </div>
+        <div class="col-1">
+            Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" />
+        </div>
+        <div class="col-1">
+            <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
+        </div>
+        <div class="col-1">
+            <input type="button" value="Filter" @onclick="UpdateSearch" />
+        </div>
         @if (IngredientList == null)
         { }
         else
         {
             @foreach (var Ingredient in IngredientList)
             {
-            <p>@Ingredient</p>
-        }
-        }
-
-        <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
-        <input type="button" value="Filter" @onclick="UpdateSearch" />
-        </p>
-    </form>
-
-    @if (Tobj == null)
-    {
-        <p><em>Loading...</em></p>
-    }
-
-    else if (Tobj.drinks == null)
-    {
-        <p><em>What is '@SearchString'?</em></p>
-
-    }
-    else
-
-    {
-        @*<h3>@Tobj.drinks[0].strDrink</h3>*@
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>strDrink</th>
-                    <th>strInstructions</th>
-                    <th>Alcoholic?</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var drink in Tobj.drinks)
-                {
-                    <tr>
-                        <td>@drink.strDrink</td>
-                        <td>@drink.strInstructions</td>
-                        <td>@drink.strAlcoholic</td>
-                    </tr>
-                }
-
-            </tbody>
-        </table>
-    }
-
-    @code {
-
-        private Models.Root Tobj;
-
-        public string SearchString;
-
-        public string IngFilter;
-
-        public bool AlcoholicBool;
-
-        private List<String> IngredientList;
-
-        //async Task<IEnumerable<String>> Autocomplete(string IngFilter)
-        //{
-        //    return await Task
-        //        .FromResult(IngredientList.Where(ing => ing.ToLower().Contains(IngFilter.ToLower())));
-        //}
-
-        //protected override async Task OnInitializedAsync()
-        //{
-        //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        //    logger.LogDebug("On Initialized Async");
-
-        //    Controllers.DrinksAPIController controller = new();
-
-        //    Tobj = await controller.Testtask(SearchString);
-
-        //    logger.LogDebug("Getting Object");
-        //}
-
-        protected async Task UpdateSearch()
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
-
-            logger.LogDebug("UpdateSearch: " + SearchString);
-
-            Controllers.DrinksAPIController controller = new();
-
-            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-            logger.LogDebug("Getting Object");
-        }
-
-        private void Autocomplete()
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
-
-            Models.IngredientList GetingredientList = new();
-
-            IngredientList = GetingredientList.GetIngredients();
-
-            logger.LogDebug("IngFilter: " + IngFilter);
-
-            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
-            {
-                if (IngredientList[Ingredientindex].Contains(this.IngFilter))
-                {
-                    IngredientList.RemoveAt(Ingredientindex);
-                }
+                <p>@Ingredient</p>
             }
         }
+    </form>
+</div>
 
-        private void filtering(ChangeEventArgs IngInput)
+@if (Tobj == null)
+{
+    <p><em>Loading...</em></p>
+}
+
+else if (Tobj.drinks == null)
+{
+    <p><em>What is '@SearchString'?</em></p>
+
+}
+else
+
+{
+    @*<h3>@Tobj.drinks[0].strDrink</h3>*@
+    <table class="table">
+        <thead>
+            <tr>
+                <th>strDrink</th>
+                <th>strInstructions</th>
+                <th>Alcoholic?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var drink in Tobj.drinks)
+            {
+                <tr>
+                    <td>@drink.strDrink</td>
+                    <td>@drink.strInstructions</td>
+                    <td>@drink.strAlcoholic</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private Models.Root Tobj;
+
+    public string SearchString;
+
+    public string IngFilter;
+
+    public bool AlcoholicBool;
+
+    private List<String> IngredientList;
+
+    //async Task<IEnumerable<String>> Autocomplete(string IngFilter)
+    //{
+    //    return await Task
+    //        .FromResult(IngredientList.Where(ing => ing.ToLower().Contains(IngFilter.ToLower())));
+    //}
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+    //    logger.LogDebug("On Initialized Async");
+
+    //    Controllers.DrinksAPIController controller = new();
+
+    //    Tobj = await controller.Testtask(SearchString);
+
+    //    logger.LogDebug("Getting Object");
+    //}
+
+    protected async Task UpdateSearch()
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        logger.LogDebug("UpdateSearch: " + SearchString);
+
+        Controllers.DrinksAPIController controller = new();
+
+        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
+
+        logger.LogDebug("Getting Object");
+    }
+
+    private void filtering(ChangeEventArgs IngInput)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        Models.IngredientList GetingredientList = new();
+
+        IngredientList = GetingredientList.GetIngredients();
+
+        logger.LogDebug("IngFilter: " + IngInput.Value.ToString());
+
+        if (IngInput.Value.ToString() == "")
         {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
-
-            Models.IngredientList GetingredientList = new();
-
-            IngredientList = GetingredientList.GetIngredients();
-
-            logger.LogDebug("IngFilter: " + IngInput.Value.ToString());
-
+            IngredientList = null;
+        }
+        else
+        {
             for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
             {
                 if (IngredientList[Ingredientindex].Contains(IngInput.Value.ToString()))
@@ -151,5 +148,5 @@
                 }
             }
         }
-
     }
+}
