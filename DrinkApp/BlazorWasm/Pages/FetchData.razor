@@ -16,29 +16,34 @@
 <h1>Drink Search</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
-<div class="container-fluid, row">
+<div class="container-fluid">
     <form>
-        <div class="col-1, tmp">
-            Drink: <input type="text" @bind="SearchString" />
+        <div class="row">
+            <div class="col-sm-3">
+                Drink: <input type="text" @bind="SearchString" />
+            </div>
+            <div class="col-sm-3 dropdown">
+                    Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn"/>
+                                    <div class="dropdown-content">
+                                        @if (IngredientList == null)
+                                        { }
+                                        else
+                                        {
+                                            @foreach (var Ingredient in IngredientList)
+                                            {
+                                        <p>@Ingredient</p>
+                                            }
+                                        }
+                                    </div>
+            </div>
+            <div class="col-sm-3">
+                <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
+            </div>
+            <div class="col-sm-3">
+                <input type="button" value="Filter" @onclick="UpdateSearch" />
+            </div>
+
         </div>
-        <div class="col-1">
-            Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" />
-        </div>
-        <div class="col-1">
-            <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
-        </div>
-        <div class="col-1">
-            <input type="button" value="Filter" @onclick="UpdateSearch" />
-        </div>
-        @if (IngredientList == null)
-        { }
-        else
-        {
-            @foreach (var Ingredient in IngredientList)
-            {
-                <p>@Ingredient</p>
-            }
-        }
     </form>
 </div>
 

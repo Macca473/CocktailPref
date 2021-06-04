@@ -15,6 +15,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\FetchData.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\FetchData.razor.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="CocktailApiSwag.json" />
     <OpenApiReference Include="swagger.json" CodeGenerator="NSwagCSharp" />
   </ItemGroup>
