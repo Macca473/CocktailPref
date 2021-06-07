@@ -118,25 +118,6 @@ using Blazored.Typeahead;
 
     private List<String> IngredientList;
 
-    //async Task<IEnumerable<String>> Autocomplete(string IngFilter)
-    //{
-    //    return await Task
-    //        .FromResult(IngredientList.Where(ing => ing.ToLower().Contains(IngFilter.ToLower())));
-    //}
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-    //    logger.LogDebug("On Initialized Async");
-
-    //    Controllers.DrinksAPIController controller = new();
-
-    //    Tobj = await controller.Testtask(SearchString);
-
-    //    logger.LogDebug("Getting Object");
-    //}
-
     protected async Task UpdateSearch()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
@@ -158,7 +139,20 @@ using Blazored.Typeahead;
 
         IngredientList = GetingredientList.GetIngredients();
 
-        logger.LogDebug("IngFilter: " + IngInput.Value.ToString());
+
+
+        string StringInput = IngInput.Value.ToString();
+
+        string fixedsearch = "";
+
+        if (StringInput.Length >= 2)
+        {
+            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+        }
+        else
+        {
+            fixedsearch = StringInput;
+        }
 
         if (IngInput.Value.ToString() == "")
         {
@@ -168,7 +162,7 @@ using Blazored.Typeahead;
         {
             for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
             {
-                if (IngredientList[Ingredientindex].Contains(IngInput.Value.ToString()))
+                if (IngredientList[Ingredientindex].Contains(fixedsearch))
                 { }
                 else
                 {
@@ -176,6 +170,15 @@ using Blazored.Typeahead;
                 }
             }
         }
+    }
+
+    protected void selectIngredient(string Ingredient)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        logger.LogDebug("Ingredient: " + Ingredient);
+
+        IngFilter = Ingredient;
     }
 
 #line default

@@ -27,7 +27,7 @@ namespace BlazorWasm.Controllers
 
 
 
-            if (SearchOption == null)
+            if (SearchOption == "" || SearchOption == null)
 
             {
                 Console.WriteLine("No search option, searching via ingredients");
@@ -43,13 +43,13 @@ namespace BlazorWasm.Controllers
 
                     Models.Root Tmp = await controller.GETDrinks(2, BodyJSONmdl.drinks[element].idDrink);
 
-                    Console.WriteLine("Tmp search length: " + Tmp.drinks.Count);
+                    //Console.WriteLine("Tmp search length: " + Tmp.drinks.Count);
 
                     BodyJSONmdl.drinks[element] = Tmp.drinks[0];
 
-                    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " Has " + IngFilter);
+                    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " Has " + IngFilter + "  |  " + Tmp.drinks[0].strDrink);
 
-                    }
+                }
             }
 
             else
@@ -67,7 +67,11 @@ namespace BlazorWasm.Controllers
                     {
                         BodyJSONmdl.drinks.RemoveAt(element);
 
-                        Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is removed");
+                        Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " (" + BodyJSONmdl.drinks[element].idDrink + ") is removed");
+                    }
+                    else
+                    {
+                        BodyJSONmdl.drinks[element] = null;
                     }
 
                     Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is " + BodyJSONmdl.drinks[element].strAlcoholic);
@@ -84,10 +88,14 @@ namespace BlazorWasm.Controllers
             else
             {
                 Console.WriteLine("body is not null");
-                Console.WriteLine("Body: " + BodyJSONmdl);
+                for (int element = 0; element < BodyJSONmdl.drinks.Count; ++element)
+                {
+                    Console.WriteLine("Body: " + BodyJSONmdl.drinks[element].ToString());
+                }
             }
 
             Console.WriteLine("end of task");
+
 
             return BodyJSONmdl;
 

@@ -24,17 +24,17 @@
             </div>
             <div class="col-sm-3 dropdown">
                     Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn"/>
-                                    <div class="dropdown-content">
-                                        @if (IngredientList == null)
-                                        { }
-                                        else
+                                <div class="dropdown-content">
+                                    @if (IngredientList == null)
+                                    { }
+                                    else
+                                    {
+                                        @foreach (var Ingredient in IngredientList)
                                         {
-                                            @foreach (var Ingredient in IngredientList)
-                                            {
-                                        <p>@Ingredient</p>
-                                            }
-                                        }
-                                    </div>
+                                            <input type="button" value="@Ingredient" @onclick ="(e => selectIngredient(Ingredient))"/>
+                                        }   
+                                    }
+                                </div>
             </div>
             <div class="col-sm-3">
                 <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
@@ -95,25 +95,6 @@ else
 
     private List<String> IngredientList;
 
-    //async Task<IEnumerable<String>> Autocomplete(string IngFilter)
-    //{
-    //    return await Task
-    //        .FromResult(IngredientList.Where(ing => ing.ToLower().Contains(IngFilter.ToLower())));
-    //}
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-    //    logger.LogDebug("On Initialized Async");
-
-    //    Controllers.DrinksAPIController controller = new();
-
-    //    Tobj = await controller.Testtask(SearchString);
-
-    //    logger.LogDebug("Getting Object");
-    //}
-
     protected async Task UpdateSearch()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
@@ -135,7 +116,20 @@ else
 
         IngredientList = GetingredientList.GetIngredients();
 
-        logger.LogDebug("IngFilter: " + IngInput.Value.ToString());
+
+
+        string StringInput = IngInput.Value.ToString();
+
+        string fixedsearch = "";
+
+        if (StringInput.Length >= 2)
+        {
+            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+        }
+        else
+        {
+            fixedsearch = StringInput;
+        }
 
         if (IngInput.Value.ToString() == "")
         {
@@ -145,7 +139,7 @@ else
         {
             for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
             {
-                if (IngredientList[Ingredientindex].Contains(IngInput.Value.ToString()))
+                if (IngredientList[Ingredientindex].Contains(fixedsearch))
                 { }
                 else
                 {
@@ -153,5 +147,14 @@ else
                 }
             }
         }
+    }
+
+    protected void selectIngredient(string Ingredient)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        logger.LogDebug("Ingredient: " + Ingredient);
+
+        IngFilter = Ingredient;
     }
 }
