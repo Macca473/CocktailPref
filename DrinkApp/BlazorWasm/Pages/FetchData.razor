@@ -13,7 +13,7 @@
 
 
 
-<h1>Drink Search</h1>
+<h1>Drink Search @catchMessage</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 <div class="container-fluid">
@@ -95,6 +95,8 @@ else
 
     private List<String> IngredientList;
 
+    public string catchMessage { get; set; }
+
     protected async Task UpdateSearch()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
@@ -106,6 +108,10 @@ else
         Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
+
+        Controllers.catchMessageController cmcontroller = new();
+
+        catchMessage = cmcontroller.GETcatchMessage();
     }
 
     private void filtering(ChangeEventArgs IngInput)
@@ -116,9 +122,7 @@ else
 
         IngredientList = GetingredientList.GetIngredients();
 
-
-
-        string StringInput = IngInput.Value.ToString();
+        string StringInput = IngInput.Value.ToString().ToLower();
 
         string fixedsearch = "";
 

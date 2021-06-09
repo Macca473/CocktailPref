@@ -25,7 +25,9 @@ namespace BlazorWasm.Controllers
 
                 Models.Root BodyJSONmdl = null;
 
+                Controllers.catchMessageController catchMessageController = new();
 
+                catchMessageController.PostcatchMessage("CatchMessageTestt");
 
             if (SearchOption == "" || SearchOption == null)
 
@@ -66,36 +68,26 @@ namespace BlazorWasm.Controllers
                     if (BodyJSONmdl.drinks[element].strAlcoholic == "Alcoholic")
                     {
                         BodyJSONmdl.drinks.RemoveAt(element);
-
-                        Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " (" + BodyJSONmdl.drinks[element].idDrink + ") is removed");
+                        //BodyJSONmdl.drinks[element] = null;
                     }
                     else
                     {
-                        BodyJSONmdl.drinks[element] = null;
+                        
                     }
-
-                    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " is " + BodyJSONmdl.drinks[element].strAlcoholic);
-
                 }
             }
 
             if (BodyJSONmdl.drinks == null)
             {
                 Console.WriteLine("body is null");
-
             }
 
             else
             {
                 Console.WriteLine("body is not null");
-                for (int element = 0; element < BodyJSONmdl.drinks.Count; ++element)
-                {
-                    Console.WriteLine("Body: " + BodyJSONmdl.drinks[element].ToString());
-                }
             }
 
             Console.WriteLine("end of task");
-
 
             return BodyJSONmdl;
 

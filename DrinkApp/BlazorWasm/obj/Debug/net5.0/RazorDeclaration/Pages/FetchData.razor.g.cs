@@ -118,6 +118,8 @@ using Blazored.Typeahead;
 
     private List<String> IngredientList;
 
+    public string catchMessage { get; set; }
+
     protected async Task UpdateSearch()
     {
         var logger = LoggerFactory.CreateLogger<FetchData>();
@@ -129,6 +131,10 @@ using Blazored.Typeahead;
         Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
+
+        Controllers.catchMessageController cmcontroller = new();
+
+        catchMessage = cmcontroller.GETcatchMessage();
     }
 
     private void filtering(ChangeEventArgs IngInput)
@@ -139,9 +145,7 @@ using Blazored.Typeahead;
 
         IngredientList = GetingredientList.GetIngredients();
 
-
-
-        string StringInput = IngInput.Value.ToString();
+        string StringInput = IngInput.Value.ToString().ToLower();
 
         string fixedsearch = "";
 
