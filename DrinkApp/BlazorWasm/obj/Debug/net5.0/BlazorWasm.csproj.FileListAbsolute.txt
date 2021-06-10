@@ -996,3 +996,5 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Blazored.Typeahead.dll
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\6DqPdQqG.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\scopedcss\Pages\FetchData.razor.rz.scp.css
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\RazorDeclaration\Pages\DrinkView.razor.g.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\Razor\Pages\DrinkView.razor.g.cs

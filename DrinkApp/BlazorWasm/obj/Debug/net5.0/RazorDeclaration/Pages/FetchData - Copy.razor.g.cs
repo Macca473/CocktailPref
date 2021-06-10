@@ -83,21 +83,21 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
 using Microsoft.Extensions.Logging;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class FetchData___Copy : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,10 +105,10 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 86 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
        
 
-    public Models.Root Tobj;
+    private Models.Root Tobj;
 
     public string SearchString;
 

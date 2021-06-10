@@ -25,10 +25,6 @@ namespace BlazorWasm.Controllers
 
                 Models.Root BodyJSONmdl = null;
 
-                Controllers.catchMessageController catchMessageController = new();
-
-                catchMessageController.PostcatchMessage("CatchMessageTestt");
-
             if (SearchOption == "" || SearchOption == null)
 
             {

@@ -13,7 +13,7 @@
 
 
 
-<h1>Drink Search @catchMessage</h1>
+<h1>Drink Search</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 <div class="container-fluid">
@@ -23,18 +23,18 @@
                 Drink: <input type="text" @bind="SearchString" />
             </div>
             <div class="col-sm-3 dropdown">
-                    Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn"/>
-                                <div class="dropdown-content">
-                                    @if (IngredientList == null)
-                                    { }
-                                    else
-                                    {
-                                        @foreach (var Ingredient in IngredientList)
-                                        {
-                                            <input type="button" value="@Ingredient" @onclick ="(e => selectIngredient(Ingredient))"/>
-                                        }   
-                                    }
-                                </div>
+                Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />
+                <div class="dropdown-content">
+                    @if (IngredientList == null)
+                    { }
+                    else
+                    {
+                        @foreach (var Ingredient in IngredientList)
+                        {
+                            <input type="button" value="@Ingredient" @onclick="(e => selectIngredient(Ingredient))" />
+                        }
+                    }
+                </div>
             </div>
             <div class="col-sm-3">
                 <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
@@ -60,32 +60,16 @@ else if (Tobj.drinks == null)
 else
 
 {
-    @*<h3>@Tobj.drinks[0].strDrink</h3>*@
-    <table class="table">
-        <thead>
-            <tr>
-                <th>strDrink</th>
-                <th>strInstructions</th>
-                <th>Alcoholic?</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var drink in Tobj.drinks)
-            {
-                <tr>
-                    <td>@drink.strDrink</td>
-                    <td>@drink.strInstructions</td>
-                    <td>@drink.strAlcoholic</td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
+    @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
+    {
+        <DrinkView drink="Tobj.drinks[drink]" />
+    }
+    
 }
 
 @code {
 
-    private Models.Root Tobj;
+    public Models.Root Tobj;
 
     public string SearchString;
 
@@ -94,8 +78,6 @@ else
     public bool AlcoholicBool;
 
     private List<String> IngredientList;
-
-    public string catchMessage { get; set; }
 
     protected async Task UpdateSearch()
     {
@@ -108,10 +90,6 @@ else
         Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
         logger.LogDebug("Getting Object");
-
-        Controllers.catchMessageController cmcontroller = new();
-
-        catchMessage = cmcontroller.GETcatchMessage();
     }
 
     private void filtering(ChangeEventArgs IngInput)

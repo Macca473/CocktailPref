@@ -83,21 +83,21 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
 using Microsoft.Extensions.Logging;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/DrinkView")]
+    public partial class DrinkView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,79 +105,18 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+#line 37 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
        
 
-    public Models.Root Tobj;
+    [Parameter]
+    public Models.Drinks drink { get; set; }
 
-    public string SearchString;
+    //protected override void OnInitialized()
+    //{
+    //    Pages.FetchData fetchData = new();
 
-    public string IngFilter;
-
-    public bool AlcoholicBool;
-
-    private List<String> IngredientList;
-
-    protected async Task UpdateSearch()
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("UpdateSearch: " + SearchString);
-
-        Controllers.DrinksAPIController controller = new();
-
-        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-        logger.LogDebug("Getting Object");
-    }
-
-    private void filtering(ChangeEventArgs IngInput)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        Models.IngredientList GetingredientList = new();
-
-        IngredientList = GetingredientList.GetIngredients();
-
-        string StringInput = IngInput.Value.ToString().ToLower();
-
-        string fixedsearch = "";
-
-        if (StringInput.Length >= 2)
-        {
-            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-        }
-        else
-        {
-            fixedsearch = StringInput;
-        }
-
-        if (IngInput.Value.ToString() == "")
-        {
-            IngredientList = null;
-        }
-        else
-        {
-            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
-            {
-                if (IngredientList[Ingredientindex].Contains(fixedsearch))
-                { }
-                else
-                {
-                    IngredientList.RemoveAt(Ingredientindex);
-                }
-            }
-        }
-    }
-
-    protected void selectIngredient(string Ingredient)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("Ingredient: " + Ingredient);
-
-        IngFilter = Ingredient;
-    }
+    //    Tobj = fetchData.Tobj;
+    //}
 
 #line default
 #line hidden

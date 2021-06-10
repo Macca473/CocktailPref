@@ -1,0 +1,48 @@
+﻿@page "/DrinkView"
+@inject HttpClient Http
+
+
+@using Microsoft.Extensions.Logging;
+@using Blazored.Typeahead;
+
+
+@inject ILoggerFactory LoggerFactory
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>strDrink</th>
+            <th>strInstructions</th>
+            <th>Alcoholic?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var drink in drinkslist.drinks)
+        {
+            <tr>
+                <td>@drink.strDrink</td>
+                <td>@drink.strInstructions</td>
+                <td>@drink.strAlcoholic</td>
+            </tr>
+        }
+
+    </tbody>
+</table>*@
+
+<div>
+    <p>strDrink</p>
+    <p>@drink.strDrink</p>
+</div>
+
+@code {
+
+    [Parameter]
+    public Models.Drinks drink { get; set; }
+
+    //protected override void OnInitialized()
+    //{
+    //    Pages.FetchData fetchData = new();
+
+    //    Tobj = fetchData.Tobj;
+    //}
+}
