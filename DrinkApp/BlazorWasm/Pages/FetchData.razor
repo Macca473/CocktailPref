@@ -47,96 +47,105 @@
     </form>
 </div>
 
-@if (Tobj == null)
-{
-    <p><em>Loading...</em></p>
-}
-
-else if (Tobj.drinks == null)
-{
-    <p><em>What is '@SearchString'?</em></p>
-
-}
-else
-
-{
-    @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
-    {
-        <DrinkView drink="Tobj.drinks[drink]" />
-    }
-    
-}
-
-@code {
-
-    public Models.Root Tobj;
-
-    public string SearchString;
-
-    public string IngFilter;
-
-    public bool AlcoholicBool;
-
-    private List<String> IngredientList;
-
-    protected async Task UpdateSearch()
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("UpdateSearch: " + SearchString);
-
-        Controllers.DrinksAPIController controller = new();
-
-        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-        logger.LogDebug("Getting Object");
-    }
-
-    private void filtering(ChangeEventArgs IngInput)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        Models.IngredientList GetingredientList = new();
-
-        IngredientList = GetingredientList.GetIngredients();
-
-        string StringInput = IngInput.Value.ToString().ToLower();
-
-        string fixedsearch = "";
-
-        if (StringInput.Length >= 2)
+<div class="container-fluid">
+    <div class="row">
+        @if (Tobj == null)
         {
-            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+            <p><em>Loading...</em></p>
+        }
+
+
+        else if (Tobj.drinks == null)
+        {
+            <p><em>What is '@SearchString'?</em></p>
+
         }
         else
-        {
-            fixedsearch = StringInput;
-        }
 
-        if (IngInput.Value.ToString() == "")
         {
-            IngredientList = null;
-        }
-        else
-        {
-            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+            @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
             {
-                if (IngredientList[Ingredientindex].Contains(fixedsearch))
-                { }
-                else
+                <div class="col-sm-3 drinkbox">
+                    <DrinkView drink="Tobj.drinks[drink]" />
+                </div>
+            }
+
+        }
+    </div>
+</div>
+   
+
+
+    @code {
+
+        public Models.Root Tobj;
+
+        public string SearchString;
+
+        public string IngFilter;
+
+        public bool AlcoholicBool;
+
+        private List<String> IngredientList;
+
+        protected async Task UpdateSearch()
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            logger.LogDebug("UpdateSearch: " + SearchString);
+
+            Controllers.DrinksAPIController controller = new();
+
+            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
+
+            logger.LogDebug("Getting Object");
+        }
+
+        private void filtering(ChangeEventArgs IngInput)
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            Models.IngredientList GetingredientList = new();
+
+            IngredientList = GetingredientList.GetIngredients();
+
+            string StringInput = IngInput.Value.ToString().ToLower();
+
+            string fixedsearch = "";
+
+            if (StringInput.Length >= 2)
+            {
+                fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+            }
+            else
+            {
+                fixedsearch = StringInput;
+            }
+
+            if (IngInput.Value.ToString() == "")
+            {
+                IngredientList = null;
+            }
+            else
+            {
+                for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
                 {
-                    IngredientList.RemoveAt(Ingredientindex);
+                    if (IngredientList[Ingredientindex].Contains(fixedsearch))
+                    { }
+                    else
+                    {
+                        IngredientList.RemoveAt(Ingredientindex);
+                    }
                 }
             }
         }
+
+        protected void selectIngredient(string Ingredient)
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            logger.LogDebug("Ingredient: " + Ingredient);
+
+            IngFilter = Ingredient;
+        }
     }
-
-    protected void selectIngredient(string Ingredient)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("Ingredient: " + Ingredient);
-
-        IngFilter = Ingredient;
-    }
-}

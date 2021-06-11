@@ -105,79 +105,80 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
-       
+#line 79 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+           
 
-    public Models.Root Tobj;
+        public Models.Root Tobj;
 
-    public string SearchString;
+        public string SearchString;
 
-    public string IngFilter;
+        public string IngFilter;
 
-    public bool AlcoholicBool;
+        public bool AlcoholicBool;
 
-    private List<String> IngredientList;
+        private List<String> IngredientList;
 
-    protected async Task UpdateSearch()
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        logger.LogDebug("UpdateSearch: " + SearchString);
-
-        Controllers.DrinksAPIController controller = new();
-
-        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-        logger.LogDebug("Getting Object");
-    }
-
-    private void filtering(ChangeEventArgs IngInput)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        Models.IngredientList GetingredientList = new();
-
-        IngredientList = GetingredientList.GetIngredients();
-
-        string StringInput = IngInput.Value.ToString().ToLower();
-
-        string fixedsearch = "";
-
-        if (StringInput.Length >= 2)
+        protected async Task UpdateSearch()
         {
-            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-        }
-        else
-        {
-            fixedsearch = StringInput;
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            logger.LogDebug("UpdateSearch: " + SearchString);
+
+            Controllers.DrinksAPIController controller = new();
+
+            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
+
+            logger.LogDebug("Getting Object");
         }
 
-        if (IngInput.Value.ToString() == "")
+        private void filtering(ChangeEventArgs IngInput)
         {
-            IngredientList = null;
-        }
-        else
-        {
-            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+            var logger = LoggerFactory.CreateLogger<FetchData>();
+
+            Models.IngredientList GetingredientList = new();
+
+            IngredientList = GetingredientList.GetIngredients();
+
+            string StringInput = IngInput.Value.ToString().ToLower();
+
+            string fixedsearch = "";
+
+            if (StringInput.Length >= 2)
             {
-                if (IngredientList[Ingredientindex].Contains(fixedsearch))
-                { }
-                else
+                fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+            }
+            else
+            {
+                fixedsearch = StringInput;
+            }
+
+            if (IngInput.Value.ToString() == "")
+            {
+                IngredientList = null;
+            }
+            else
+            {
+                for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
                 {
-                    IngredientList.RemoveAt(Ingredientindex);
+                    if (IngredientList[Ingredientindex].Contains(fixedsearch))
+                    { }
+                    else
+                    {
+                        IngredientList.RemoveAt(Ingredientindex);
+                    }
                 }
             }
         }
-    }
 
-    protected void selectIngredient(string Ingredient)
-    {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
+        protected void selectIngredient(string Ingredient)
+        {
+            var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        logger.LogDebug("Ingredient: " + Ingredient);
+            logger.LogDebug("Ingredient: " + Ingredient);
 
-        IngFilter = Ingredient;
-    }
+            IngFilter = Ingredient;
+        }
+    
 
 #line default
 #line hidden

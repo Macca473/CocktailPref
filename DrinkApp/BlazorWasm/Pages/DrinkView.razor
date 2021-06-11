@@ -8,28 +8,7 @@
 
 @inject ILoggerFactory LoggerFactory
 
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>strDrink</th>
-            <th>strInstructions</th>
-            <th>Alcoholic?</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var drink in drinkslist.drinks)
-        {
-            <tr>
-                <td>@drink.strDrink</td>
-                <td>@drink.strInstructions</td>
-                <td>@drink.strAlcoholic</td>
-            </tr>
-        }
-
-    </tbody>
-</table>*@
-
-<div>
+<div class="marginclass">
     <p>strDrink</p>
     <p>@drink.strDrink</p>
 </div>
