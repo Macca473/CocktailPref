@@ -26,7 +26,6 @@ namespace BlazorWasm.Controllers
                 Models.Root BodyJSONmdl = null;
 
             if (SearchOption == "" || SearchOption == null)
-
             {
                 Console.WriteLine("No search option, searching via ingredients");
 

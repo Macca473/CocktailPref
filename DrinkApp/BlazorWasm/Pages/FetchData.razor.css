@@ -6,6 +6,8 @@ div {
 /*    background-color: blue;*/
 }
 
+
+
 .drinkbox {
     width: 100%;
     height: 200px;
@@ -36,3 +38,7 @@ div {
     .dropdown:hover .dropdown-content {
         display: block;
     }
+
+.Ingredient {
+    background-color: #9089b0
+}

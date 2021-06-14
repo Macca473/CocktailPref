@@ -116,7 +116,7 @@ using Blazored.Typeahead;
 
         public bool AlcoholicBool;
 
-        private List<String> IngredientList;
+        private List<Models.IngredientColList.IngWcolClass> IngredientList;
 
         protected async Task UpdateSearch()
         {
@@ -135,7 +135,9 @@ using Blazored.Typeahead;
         {
             var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            Models.IngredientList GetingredientList = new();
+            //Models.IngredientList GetingredientList = new();
+
+            Models.IngredientColList GetingredientList = new();
 
             IngredientList = GetingredientList.GetIngredients();
 
@@ -160,7 +162,7 @@ using Blazored.Typeahead;
             {
                 for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
                 {
-                    if (IngredientList[Ingredientindex].Contains(fixedsearch))
+                    if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
                     { }
                     else
                     {

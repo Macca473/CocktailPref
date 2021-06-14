@@ -31,7 +31,7 @@
                     {
                         @foreach (var Ingredient in IngredientList)
                         {
-                            <input type="button" value="@Ingredient" @onclick="(e => selectIngredient(Ingredient))" />
+                    <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
                         }
                     }
                 </div>
@@ -86,7 +86,7 @@
 
         public bool AlcoholicBool;
 
-        private List<String> IngredientList;
+        private List<Models.IngredientColList.IngWcolClass> IngredientList;
 
         protected async Task UpdateSearch()
         {
@@ -105,7 +105,9 @@
         {
             var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            Models.IngredientList GetingredientList = new();
+            //Models.IngredientList GetingredientList = new();
+
+            Models.IngredientColList GetingredientList = new();
 
             IngredientList = GetingredientList.GetIngredients();
 
@@ -130,7 +132,7 @@
             {
                 for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
                 {
-                    if (IngredientList[Ingredientindex].Contains(fixedsearch))
+                    if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
                     { }
                     else
                     {
