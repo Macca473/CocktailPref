@@ -10,9 +10,6 @@
 
 @inject ILoggerFactory LoggerFactory
 
-
-
-
 <h1>Drink Search</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
@@ -23,18 +20,19 @@
                 Drink: <input type="text" @bind="SearchString" />
             </div>
             <div class="col-sm-3 dropdown">
-                Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />
-                <div class="dropdown-content">
+                <Ingsearch/>
+                @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
+                @*<div class="dropdown-content">
                     @if (IngredientList == null)
                     { }
                     else
                     {
                         @foreach (var Ingredient in IngredientList)
                         {
-                    <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                            <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
                         }
                     }
-                </div>
+                </div>*@
             </div>
             <div class="col-sm-3">
                 <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
@@ -66,7 +64,7 @@
             @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
             {
                 <div class="col-sm-3 drinkbox">
-                    <DrinkView drink="Tobj.drinks[drink]" />
+                    <DrinkView drink="Tobj.drinks[drink]"/>
                 </div>
             }
 
@@ -82,7 +80,8 @@
 
         public string SearchString;
 
-        public string IngFilter;
+        [Parameter]
+        public string IngFilter { get; set; }
 
         public bool AlcoholicBool;
 
@@ -96,58 +95,66 @@
 
             Controllers.DrinksAPIController controller = new();
 
+            Pages.Ingsearch ingsearch = new();
+
+            //IngFilter = ingsearch.Inginp.ToString();
+
+            logger.LogDebug("IngFilter raw: " + ingsearch.Inginp.ToString());
+
+            logger.LogDebug("IngFilter: " + IngFilter);
+
             Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
             logger.LogDebug("Getting Object");
         }
 
-        private void filtering(ChangeEventArgs IngInput)
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
+        //private void filtering(ChangeEventArgs IngInput)
+        //{
+        //    var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            //Models.IngredientList GetingredientList = new();
+        //    //Models.IngredientList GetingredientList = new();
 
-            Models.IngredientColList GetingredientList = new();
+        //    Models.IngredientColList GetingredientList = new();
 
-            IngredientList = GetingredientList.GetIngredients();
+        //    IngredientList = GetingredientList.GetIngredients();
 
-            string StringInput = IngInput.Value.ToString().ToLower();
+        //    string StringInput = IngInput.Value.ToString().ToLower();
 
-            string fixedsearch = "";
+        //    string fixedsearch = "";
 
-            if (StringInput.Length >= 2)
-            {
-                fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-            }
-            else
-            {
-                fixedsearch = StringInput;
-            }
+        //    if (StringInput.Length >= 2)
+        //    {
+        //        fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+        //    }
+        //    else
+        //    {
+        //        fixedsearch = StringInput;
+        //    }
 
-            if (IngInput.Value.ToString() == "")
-            {
-                IngredientList = null;
-            }
-            else
-            {
-                for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
-                {
-                    if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
-                    { }
-                    else
-                    {
-                        IngredientList.RemoveAt(Ingredientindex);
-                    }
-                }
-            }
-        }
+        //    if (IngInput.Value.ToString() == "")
+        //    {
+        //        IngredientList = null;
+        //    }
+        //    else
+        //    {
+        //        for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+        //        {
+        //            if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
+        //            { }
+        //            else
+        //            {
+        //                IngredientList.RemoveAt(Ingredientindex);
+        //            }
+        //        }
+        //    }
+        //}
 
-        protected void selectIngredient(string Ingredient)
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
+        //protected void selectIngredient(string Ingredient)
+        //{
+        //    var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            logger.LogDebug("Ingredient: " + Ingredient);
+        //    logger.LogDebug("Ingredient: " + Ingredient);
 
-            IngFilter = Ingredient;
-        }
+        //    IngFilter = Ingredient;
+        //}
     }

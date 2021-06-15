@@ -83,21 +83,21 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
+#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
 using Microsoft.Extensions.Logging;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
+#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData___Copy : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Ingsearch")]
+    public partial class Ingsearch : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,31 +105,12 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 79 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData - Copy.razor"
+#line 31 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
            
 
-        public Models.Root Tobj;
-
-        public string SearchString;
-
-        public string IngFilter;
-
-        public bool AlcoholicBool;
+        public string Inginp;
 
         private List<Models.IngredientColList.IngWcolClass> IngredientList;
-
-        protected async Task UpdateSearch()
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
-
-            logger.LogDebug("UpdateSearch: " + SearchString);
-
-            Controllers.DrinksAPIController controller = new();
-
-            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-            logger.LogDebug("Getting Object");
-        }
 
         private void filtering(ChangeEventArgs IngInput)
         {
@@ -172,13 +153,15 @@ using Blazored.Typeahead;
             }
         }
 
-        protected void selectIngredient(string Ingredient)
+        protected string selectIngredient(string Ingredient)
         {
             var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            logger.LogDebug("Ingredient: " + Ingredient);
+            logger.LogDebug("(Ingsearch)Ingredient: " + Ingredient);
 
-            IngFilter = Ingredient;
+            Inginp = Ingredient;
+
+            return Ingredient;
         }
     
 

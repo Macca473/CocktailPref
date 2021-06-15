@@ -17,9 +17,10 @@ namespace BlazorWasm.Controllers
 
         public async Task<Models.Root> SearchControllor(string SearchOption, string IngFilter, bool AlcoholicBool)
         {
+                
                 //Models.Root DrinksModel = new();
 
-                Console.WriteLine("start of task");
+                Console.WriteLine("start of task:" + SearchOption + "  |  " + IngFilter + "  |  " + AlcoholicBool);
 
                 Controllers.GETDrinksController controller = new();
 
@@ -31,8 +32,11 @@ namespace BlazorWasm.Controllers
 
                 BodyJSONmdl = await controller.GETDrinks(1, IngFilter);//0:drinkname 1:ingredient 2:ID
 
-                Console.WriteLine("ingredient search length: " + BodyJSONmdl.drinks.Count);
-
+                if (BodyJSONmdl == null)
+                {
+                    Console.WriteLine("BodyJSONmdl is null");
+                }
+                
                 Models.Root TmpBody = BodyJSONmdl;
 
                 for (int element = 0; element < BodyJSONmdl.drinks.Count; ++element)
@@ -46,7 +50,7 @@ namespace BlazorWasm.Controllers
 
                     Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " Has " + IngFilter + "  |  " + Tmp.drinks[0].strDrink);
 
-                }
+                    }
             }
 
             else
