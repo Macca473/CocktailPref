@@ -10,6 +10,8 @@
 
 @inject ILoggerFactory LoggerFactory
 
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
 <h1>Drink Search</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
@@ -20,19 +22,19 @@
                 Drink: <input type="text" @bind="SearchString" />
             </div>
             <div class="col-sm-3 dropdown">
-                <Ingsearch/>
+                <Ingsearch @key="IngFilter" />
                 @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
                 @*<div class="dropdown-content">
-                    @if (IngredientList == null)
-                    { }
-                    else
-                    {
-                        @foreach (var Ingredient in IngredientList)
+                        @if (IngredientList == null)
+                        { }
+                        else
                         {
-                            <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                            @foreach (var Ingredient in IngredientList)
+                            {
+                                <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                            }
                         }
-                    }
-                </div>*@
+                    </div>*@
             </div>
             <div class="col-sm-3">
                 <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
@@ -64,97 +66,93 @@
             @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
             {
                 <div class="col-sm-3 drinkbox">
-                    <DrinkView drink="Tobj.drinks[drink]"/>
+                    <DrinkView drink="Tobj.drinks[drink]" />
                 </div>
             }
 
         }
     </div>
 </div>
-   
 
 
-    @code {
 
-        public Models.Root Tobj;
+@code {
 
-        public string SearchString;
+    public Models.Root Tobj;
 
-        [Parameter]
-        public string IngFilter { get; set; }
+    public string SearchString;
 
-        public bool AlcoholicBool;
+    //[Parameter]
+    //public string IngFilter { get; set; }
 
-        private List<Models.IngredientColList.IngWcolClass> IngredientList;
+    public string IngFilter;
 
-        protected async Task UpdateSearch()
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
+    public bool AlcoholicBool;
 
-            logger.LogDebug("UpdateSearch: " + SearchString);
+    private List<Models.IngredientColList.IngWcolClass> IngredientList;
 
-            Controllers.DrinksAPIController controller = new();
+    protected async Task UpdateSearch()
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            Pages.Ingsearch ingsearch = new();
+        logger.LogDebug("UpdateSearch: " + SearchString);
 
-            //IngFilter = ingsearch.Inginp.ToString();
+        Controllers.DrinksAPIController controller = new();
 
-            logger.LogDebug("IngFilter raw: " + ingsearch.Inginp.ToString());
+        IngFilter = await LocalStorage.GetItemAsync<string>("Ing");
 
-            logger.LogDebug("IngFilter: " + IngFilter);
+        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
-            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
-
-            logger.LogDebug("Getting Object");
-        }
-
-        //private void filtering(ChangeEventArgs IngInput)
-        //{
-        //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        //    //Models.IngredientList GetingredientList = new();
-
-        //    Models.IngredientColList GetingredientList = new();
-
-        //    IngredientList = GetingredientList.GetIngredients();
-
-        //    string StringInput = IngInput.Value.ToString().ToLower();
-
-        //    string fixedsearch = "";
-
-        //    if (StringInput.Length >= 2)
-        //    {
-        //        fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-        //    }
-        //    else
-        //    {
-        //        fixedsearch = StringInput;
-        //    }
-
-        //    if (IngInput.Value.ToString() == "")
-        //    {
-        //        IngredientList = null;
-        //    }
-        //    else
-        //    {
-        //        for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
-        //        {
-        //            if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
-        //            { }
-        //            else
-        //            {
-        //                IngredientList.RemoveAt(Ingredientindex);
-        //            }
-        //        }
-        //    }
-        //}
-
-        //protected void selectIngredient(string Ingredient)
-        //{
-        //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        //    logger.LogDebug("Ingredient: " + Ingredient);
-
-        //    IngFilter = Ingredient;
-        //}
+        logger.LogDebug("Getting Object");
     }
+
+    //private void filtering(ChangeEventArgs IngInput)
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+    //    //Models.IngredientList GetingredientList = new();
+
+    //    Models.IngredientColList GetingredientList = new();
+
+    //    IngredientList = GetingredientList.GetIngredients();
+
+    //    string StringInput = IngInput.Value.ToString().ToLower();
+
+    //    string fixedsearch = "";
+
+    //    if (StringInput.Length >= 2)
+    //    {
+    //        fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+    //    }
+    //    else
+    //    {
+    //        fixedsearch = StringInput;
+    //    }
+
+    //    if (IngInput.Value.ToString() == "")
+    //    {
+    //        IngredientList = null;
+    //    }
+    //    else
+    //    {
+    //        for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+    //        {
+    //            if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
+    //            { }
+    //            else
+    //            {
+    //                IngredientList.RemoveAt(Ingredientindex);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //protected void selectIngredient(string Ingredient)
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
+
+    //    logger.LogDebug("Ingredient: " + Ingredient);
+
+    //    IngFilter = Ingredient;
+    //}
+}

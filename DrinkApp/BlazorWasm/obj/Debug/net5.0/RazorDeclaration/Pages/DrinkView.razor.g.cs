@@ -62,6 +62,13 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #line hidden
 #nullable disable
 #nullable restore
+#line 8 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
 using Microsoft.JSInterop;
 
@@ -83,8 +90,8 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
-using Microsoft.Extensions.Logging;
+#line 12 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using Blazored.LocalStorage;
 
 #line default
 #line hidden

@@ -62,6 +62,13 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #line hidden
 #nullable disable
 #nullable restore
+#line 8 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 9 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
 using Microsoft.JSInterop;
 
@@ -83,14 +90,14 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
-using Microsoft.Extensions.Logging;
+#line 12 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using Blazored.LocalStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
+#line 4 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
 using Blazored.Typeahead;
 
 #line default
@@ -105,69 +112,75 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
-           
+#line 27 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\Ingsearch.razor"
+       
 
-        public string Inginp;
+    [Parameter]
+    public string IngFilter { get; set; }
 
-        private List<Models.IngredientColList.IngWcolClass> IngredientList;
+    private List<Models.IngredientColList.IngWcolClass> IngredientList;
 
-        private void filtering(ChangeEventArgs IngInput)
+    private void filtering(ChangeEventArgs IngInput)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        //Models.IngredientList GetingredientList = new();
+
+        Models.IngredientColList GetingredientList = new();
+
+        IngredientList = GetingredientList.GetIngredients();
+
+        string StringInput = IngInput.Value.ToString().ToLower();
+
+        string fixedsearch = "";
+
+        if (StringInput.Length >= 2)
         {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
+            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+        }
+        else
+        {
+            fixedsearch = StringInput;
+        }
 
-            //Models.IngredientList GetingredientList = new();
-
-            Models.IngredientColList GetingredientList = new();
-
-            IngredientList = GetingredientList.GetIngredients();
-
-            string StringInput = IngInput.Value.ToString().ToLower();
-
-            string fixedsearch = "";
-
-            if (StringInput.Length >= 2)
+        if (IngInput.Value.ToString() == "")
+        {
+            IngredientList = null;
+        }
+        else
+        {
+            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
             {
-                fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-            }
-            else
-            {
-                fixedsearch = StringInput;
-            }
-
-            if (IngInput.Value.ToString() == "")
-            {
-                IngredientList = null;
-            }
-            else
-            {
-                for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+                if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
+                { }
+                else
                 {
-                    if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
-                    { }
-                    else
-                    {
-                        IngredientList.RemoveAt(Ingredientindex);
-                    }
+                    IngredientList.RemoveAt(Ingredientindex);
                 }
             }
         }
 
-        protected string selectIngredient(string Ingredient)
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            logger.LogDebug("(Ingsearch)Ingredient: " + Ingredient);
+    }
 
-            Inginp = Ingredient;
+    public string selectIngredient(string Ingredient)
+    {
+        var logger = LoggerFactory.CreateLogger<Ingsearch>();
 
-            return Ingredient;
-        }
-    
+        logger.LogDebug("(Ingsearch)Ingredient: " + Ingredient);
+
+        IngFilter = Ingredient;
+
+        LocalStorage.SetItemAsync("Ing", IngFilter);
+
+        return Ingredient;
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.LocalStorage.ILocalStorageService LocalStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerFactory LoggerFactory { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }

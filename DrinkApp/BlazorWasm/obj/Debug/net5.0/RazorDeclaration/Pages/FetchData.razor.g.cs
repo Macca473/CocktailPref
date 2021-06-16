@@ -83,6 +83,13 @@ using BlazorWasm.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 12 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\_Imports.razor"
+using Blazored.LocalStorage;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 5 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
 using Microsoft.Extensions.Logging;
 
@@ -105,95 +112,91 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 80 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
-           
+#line 79 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\FetchData.razor"
+       
 
-        public Models.Root Tobj;
+    public Models.Root Tobj;
 
-        public string SearchString;
+    public string SearchString;
 
-        [Parameter]
-        public string IngFilter { get; set; }
+    //[Parameter]
+    //public string IngFilter { get; set; }
 
-        public bool AlcoholicBool;
+    public string IngFilter;
 
-        private List<Models.IngredientColList.IngWcolClass> IngredientList;
+    public bool AlcoholicBool;
 
-        protected async Task UpdateSearch()
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
+    private List<Models.IngredientColList.IngWcolClass> IngredientList;
 
-            logger.LogDebug("UpdateSearch: " + SearchString);
+    protected async Task UpdateSearch()
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            Controllers.DrinksAPIController controller = new();
+        logger.LogDebug("UpdateSearch: " + SearchString);
 
-            Pages.Ingsearch ingsearch = new();
+        Controllers.DrinksAPIController controller = new();
 
-            //IngFilter = ingsearch.Inginp.ToString();
+        IngFilter = await LocalStorage.GetItemAsync<string>("Ing");
 
-            logger.LogDebug("IngFilter raw: " + ingsearch.Inginp.ToString());
+        Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
 
-            logger.LogDebug("IngFilter: " + IngFilter);
+        logger.LogDebug("Getting Object");
+    }
 
-            Tobj = await controller.SearchControllor(SearchString, IngFilter, AlcoholicBool);
+    //private void filtering(ChangeEventArgs IngInput)
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            logger.LogDebug("Getting Object");
-        }
+    //    //Models.IngredientList GetingredientList = new();
 
-        //private void filtering(ChangeEventArgs IngInput)
-        //{
-        //    var logger = LoggerFactory.CreateLogger<FetchData>();
+    //    Models.IngredientColList GetingredientList = new();
 
-        //    //Models.IngredientList GetingredientList = new();
+    //    IngredientList = GetingredientList.GetIngredients();
 
-        //    Models.IngredientColList GetingredientList = new();
+    //    string StringInput = IngInput.Value.ToString().ToLower();
 
-        //    IngredientList = GetingredientList.GetIngredients();
+    //    string fixedsearch = "";
 
-        //    string StringInput = IngInput.Value.ToString().ToLower();
+    //    if (StringInput.Length >= 2)
+    //    {
+    //        fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+    //    }
+    //    else
+    //    {
+    //        fixedsearch = StringInput;
+    //    }
 
-        //    string fixedsearch = "";
+    //    if (IngInput.Value.ToString() == "")
+    //    {
+    //        IngredientList = null;
+    //    }
+    //    else
+    //    {
+    //        for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+    //        {
+    //            if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
+    //            { }
+    //            else
+    //            {
+    //                IngredientList.RemoveAt(Ingredientindex);
+    //            }
+    //        }
+    //    }
+    //}
 
-        //    if (StringInput.Length >= 2)
-        //    {
-        //        fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
-        //    }
-        //    else
-        //    {
-        //        fixedsearch = StringInput;
-        //    }
+    //protected void selectIngredient(string Ingredient)
+    //{
+    //    var logger = LoggerFactory.CreateLogger<FetchData>();
 
-        //    if (IngInput.Value.ToString() == "")
-        //    {
-        //        IngredientList = null;
-        //    }
-        //    else
-        //    {
-        //        for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
-        //        {
-        //            if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
-        //            { }
-        //            else
-        //            {
-        //                IngredientList.RemoveAt(Ingredientindex);
-        //            }
-        //        }
-        //    }
-        //}
+    //    logger.LogDebug("Ingredient: " + Ingredient);
 
-        //protected void selectIngredient(string Ingredient)
-        //{
-        //    var logger = LoggerFactory.CreateLogger<FetchData>();
-
-        //    logger.LogDebug("Ingredient: " + Ingredient);
-
-        //    IngFilter = Ingredient;
-        //}
-    
+    //    IngFilter = Ingredient;
+    //}
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.LocalStorage.ILocalStorageService LocalStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILoggerFactory LoggerFactory { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }

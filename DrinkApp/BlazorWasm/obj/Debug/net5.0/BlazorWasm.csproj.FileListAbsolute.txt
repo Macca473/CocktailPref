@@ -663,11 +663,7 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\32+mPaA+.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\48oQ+MRk.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\jPapDDCg.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\Ifgm381g.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\kyevQ37c.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\L9pyGyTr.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\4VL40DWA.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\A+WLnzn0.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\eD6MpBu8.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\ZyZgc+mY.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\7zXOfc3I.gz
@@ -676,7 +672,6 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\TAhTUGUo.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\p7GYRHS3.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\nQ51aS53.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\1OFwHENx.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\W6Iqr0JU.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\0Dl4OIWc.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\vpLTK51C.gz
@@ -724,7 +719,6 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\I48SSWnk.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\kxkVJYl3.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\EawpOKjA.gz
-D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\d7kwqKjH.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\oV952hxz.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\kEBKITgx.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\R+WOEVl1.gz
@@ -998,3 +992,18 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\RazorDeclaration\Pages\Ingsearch.razor.g.cs
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\Razor\Pages\Ingsearch.razor.g.cs
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\scopedcss\Pages\Ingsearch.razor.rz.scp.css
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Bunit.Core.dll.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Blazored.LocalStorage.dll
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Bunit.Core.dll
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\9+F+ciXg.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\vpGJ1RzF.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\+k832s+V.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\P49+Nq+t.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\UOdfJ7KD.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\RB+ET7QY.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\dpjXFLlM.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\s9FJ+5P0.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\8bYK+mav.gz

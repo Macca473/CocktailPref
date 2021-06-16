@@ -1,88 +1,93 @@
 ﻿@page "/Ingsearch"
 @inject HttpClient Http
 
-
-@using Microsoft.Extensions.Logging;
 @using Blazored.Typeahead;
 
 @inject ILoggerFactory LoggerFactory
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
-            <div>
-                Ingredient: <input type="text" @oninput="filtering" @bind="@Inginp" class="dropbtn" />
-                <div class="dropdown-content">
-                    @if (IngredientList == null)
-                    { }
-                    else
-                    {
-                        @foreach (var Ingredient in IngredientList)
-                        {
-                    <input type="button"
-                           style="background-color:@Ingredient.Colors;"
-                           value="@Ingredient.Ingredients"
-                           @onclick="(e => selectIngredient(Ingredient.Ingredients))"
-                     />
-                        }
-                    }
-                </div>
-            </div>
-   
-
-
-    @code {
-
-        public string Inginp;
-
-        private List<Models.IngredientColList.IngWcolClass> IngredientList;
-
-        private void filtering(ChangeEventArgs IngInput)
+<div>
+    Ingredient: <input type="text" @oninput="filtering" @bind="@IngFilter" class="dropbtn" />
+    <div class="dropdown-content">
+        @if (IngredientList == null)
+        { }
+        else
         {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
-
-            //Models.IngredientList GetingredientList = new();
-
-            Models.IngredientColList GetingredientList = new();
-
-            IngredientList = GetingredientList.GetIngredients();
-
-            string StringInput = IngInput.Value.ToString().ToLower();
-
-            string fixedsearch = "";
-
-            if (StringInput.Length >= 2)
+            @foreach (var Ingredient in IngredientList)
             {
-                fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+                <input type="button"
+                       style="background-color:@Ingredient.Colors;"
+                       value="@Ingredient.Ingredients"
+                       @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
             }
-            else
-            {
-                fixedsearch = StringInput;
-            }
+        }
+    </div>
+</div>
+<div>
+    <p></p>
+</div>
 
-            if (IngInput.Value.ToString() == "")
+@code {
+
+    [Parameter]
+    public string IngFilter { get; set; }
+
+    private List<Models.IngredientColList.IngWcolClass> IngredientList;
+
+    private void filtering(ChangeEventArgs IngInput)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        //Models.IngredientList GetingredientList = new();
+
+        Models.IngredientColList GetingredientList = new();
+
+        IngredientList = GetingredientList.GetIngredients();
+
+        string StringInput = IngInput.Value.ToString().ToLower();
+
+        string fixedsearch = "";
+
+        if (StringInput.Length >= 2)
+        {
+            fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
+        }
+        else
+        {
+            fixedsearch = StringInput;
+        }
+
+        if (IngInput.Value.ToString() == "")
+        {
+            IngredientList = null;
+        }
+        else
+        {
+            for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
             {
-                IngredientList = null;
-            }
-            else
-            {
-                for (int Ingredientindex = IngredientList.Count - 1; Ingredientindex >= 0; --Ingredientindex)
+                if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
+                { }
+                else
                 {
-                    if (IngredientList[Ingredientindex].Ingredients.Contains(fixedsearch))
-                    { }
-                    else
-                    {
-                        IngredientList.RemoveAt(Ingredientindex);
-                    }
+                    IngredientList.RemoveAt(Ingredientindex);
                 }
             }
         }
 
-        protected string selectIngredient(string Ingredient)
-        {
-            var logger = LoggerFactory.CreateLogger<FetchData>();
 
-            logger.LogDebug("(Ingsearch)Ingredient: " + Ingredient);
-
-            Inginp = Ingredient;
-
-            return Ingredient;
-        }
     }
+
+    public string selectIngredient(string Ingredient)
+    {
+        var logger = LoggerFactory.CreateLogger<Ingsearch>();
+
+        logger.LogDebug("(Ingsearch)Ingredient: " + Ingredient);
+
+        IngFilter = Ingredient;
+
+        LocalStorage.SetItemAsync("Ing", IngFilter);
+
+        return Ingredient;
+    }
+
+}
