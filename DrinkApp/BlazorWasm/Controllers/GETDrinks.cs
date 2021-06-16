@@ -13,7 +13,7 @@ namespace BlazorWasm.Controllers
     {
         public async Task<Models.Root> GETDrinks(int searchType, string searchOption)
         {
-            string[] searchTypeList = {"search.php?s=","filter.php?i=","lookup.php?i="};
+            string[] searchTypeList = {"search.php?s=","filter.php?i=","lookup.php?i=","search.php?f="};
 
             //0:drinkname 1:ingredient 2:ID
 
