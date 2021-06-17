@@ -19,7 +19,7 @@
     <form>
         <div class="row">
             <div class="col-sm-3">
-                Drink: <input type="text" @bind="SearchString" />
+                Drink: <input type="text" @bind="SearchString" class="text_input"/>
             </div>
             <div class="col-sm-3 dropdown">
                 <Ingsearch @key="IngFilter" />
@@ -36,11 +36,12 @@
                         }
                     </div>*@
             </div>
-            <div class="col-sm-3">
-                <input type="checkbox" value="Alcoholic?" @bind="AlcoholicBool" />
+            <div class="col-sm-3 Alcoholcheck">
+                    Alcoholic?:
+                    <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
             </div>
-            <div class="col-sm-3">
-                <input type="button" value="Filter" @onclick="UpdateSearch" />
+            <div class="col-sm-3 textInput">
+                    <input type="button" value="Filter" @onclick="UpdateSearch"/>
             </div>
 
         </div>
@@ -51,7 +52,7 @@
     <div class="row">
         @if (Tobj == null)
         {
-            <p><em>Loading...</em></p>
+            <p>Loading...</p>
         }
 
 

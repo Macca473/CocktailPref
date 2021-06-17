@@ -9,9 +9,22 @@
 @inject ILoggerFactory LoggerFactory
 
 <div class="marginclass">
-    <p>Drink Name</p>
-    <p>@drink.strDrink</p>
-    <p>@drink.strTags</p>
+    @*<p>Drink Name</p>
+        <p>@drink.strDrink</p>
+        <p>@drink.strTags</p>*@
+    <div class="container">
+        <div class="row">
+            <div class="col-6 drinkview" style="font-size:@fontSize(@drink.strDrink)">
+                @drink.strDrink
+            </div>
+            <div class="col-6 drinkview" style="font-size:@fontSize(@drink.strAlcoholic)">
+                @drink.strAlcoholic
+            </div>
+        </div>
+        <div class="DrInstructions">
+            @drink.strInstructions
+        </div>
+    </div>
 </div>
 
 @code {
@@ -19,10 +32,25 @@
     [Parameter]
     public Models.Drinks drink { get; set; }
 
+    //public int fontSize-strDrink;
+
+    //public int fontSize-strAlcoholic;
+
     //protected override void OnInitialized()
     //{
-    //    Pages.FetchData fetchData = new();
 
-    //    Tobj = fetchData.Tobj;
     //}
+
+    public int fontSize(string text)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        int Length = text.Length;
+
+        int size = 200 - (Length * 10);
+
+        logger.LogDebug("200 - (" + Length + ") * 10 = " + size);
+
+        return size;
+    }
 }

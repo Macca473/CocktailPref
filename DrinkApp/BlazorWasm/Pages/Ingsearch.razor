@@ -7,7 +7,7 @@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div>
-    Ingredient: <input type="text" @oninput="filtering" @bind="@IngFilter" class="dropbtn" />
+    Ingredient: <input type="text" @oninput="filtering" @bind="@IngFilter" class="text_input" />
     <div class="dropdown-content">
         @if (IngredientList == null)
         { }
@@ -18,7 +18,7 @@
                 <input type="button"
                        style="background-color:@Ingredient.Colors;"
                        value="@Ingredient.Ingredients"
-                       @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                       @onclick="(e => selectIngredient(Ingredient.Ingredients))"/>
             }
         }
     </div>
@@ -40,6 +40,11 @@
 
         //Models.IngredientList GetingredientList = new();
 
+        if (IngInput.Value.ToString() == null || IngInput.Value.ToString() == "")
+        {
+            LocalStorage.RemoveItemAsync("Ing");
+        }
+
         Models.IngredientColList GetingredientList = new();
 
         IngredientList = GetingredientList.GetIngredients();
@@ -48,7 +53,7 @@
 
         string fixedsearch = "";
 
-        if (StringInput.Length >= 2)
+        if (StringInput.Length >= 1)
         {
             fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
         }

@@ -112,18 +112,33 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
+#line 30 "D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\Pages\DrinkView.razor"
        
 
     [Parameter]
     public Models.Drinks drink { get; set; }
 
+    //public int fontSize-strDrink;
+
+    //public int fontSize-strAlcoholic;
+
     //protected override void OnInitialized()
     //{
-    //    Pages.FetchData fetchData = new();
 
-    //    Tobj = fetchData.Tobj;
     //}
+
+    public int fontSize(string text)
+    {
+        var logger = LoggerFactory.CreateLogger<FetchData>();
+
+        int Length = text.Length;
+
+        int size = 200 - (Length * 10);
+
+        logger.LogDebug("200 - (" + Length + ") * 10 = " + size);
+
+        return size;
+    }
 
 #line default
 #line hidden

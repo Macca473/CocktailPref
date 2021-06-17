@@ -126,6 +126,11 @@ using Blazored.Typeahead;
 
         //Models.IngredientList GetingredientList = new();
 
+        if (IngInput.Value.ToString() == null || IngInput.Value.ToString() == "")
+        {
+            LocalStorage.RemoveItemAsync("Ing");
+        }
+
         Models.IngredientColList GetingredientList = new();
 
         IngredientList = GetingredientList.GetIngredients();
@@ -134,7 +139,7 @@ using Blazored.Typeahead;
 
         string fixedsearch = "";
 
-        if (StringInput.Length >= 2)
+        if (StringInput.Length >= 1)
         {
             fixedsearch = char.ToUpper(StringInput[0]) + StringInput.Substring(1);
         }

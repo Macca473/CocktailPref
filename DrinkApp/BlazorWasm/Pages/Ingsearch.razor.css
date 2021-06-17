@@ -1,12 +1,16 @@
 ﻿body {
 }
 
-div {
-    border-style: solid solid solid solid;
-/*    background-color: blue;*/
+.Cpersent {
+    width: 100%;
+    height: 100%;
 }
 
-
+div {
+    border-style: solid solid solid solid;
+    border-width:1px;
+/*    background-color: blue;*/
+}
 
 .drinkbox {
     width: 100%;
@@ -41,4 +45,18 @@ div {
 
 .Ingredient {
     background-color: #9089b0
+}
+
+.text_input {
+    position: relative;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text_input {
+    position: relative;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }

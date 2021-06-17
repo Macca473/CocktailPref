@@ -30,58 +30,27 @@ namespace BlazorWasm.Controllers
             {
                 Console.WriteLine("No search option, searching via ingredients");
 
-                //BodyJSONmdl = await controller.GETDrinks(1, IngFilter);//0:drinkname 1:ingredient 2:ID
+                BodyJSONmdl = await controller.GETDrinks(1, IngFilter);//0:drinkname 1:ingredient 2:ID
 
-                //if (BodyJSONmdl == null)
-                //{
-                //    Console.WriteLine("BodyJSONmdl is null");
-                //}
-
-                //Models.Root TmpBody = BodyJSONmdl;
-
-                //for (int element = 0; element < BodyJSONmdl.drinks.Count; ++element)
-                //    {
-
-                //    Models.Root Tmp = await controller.GETDrinks(2, BodyJSONmdl.drinks[element].idDrink);
-
-                //    //Console.WriteLine("Tmp search length: " + Tmp.drinks.Count);
-
-                //    BodyJSONmdl.drinks[element] = Tmp.drinks[0];
-
-                //    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " Has " + IngFilter + "  |  " + Tmp.drinks[0].strDrink);
-
-                //    }
-
-                char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-
-                for (int letter = 0; letter < alphabet.Length; letter++)
+                if (BodyJSONmdl == null)
                 {
-                    Models.Root thisletter = await controller.GETDrinks(3, alphabet[letter].ToString());//0:drinkname 1:ingredient 2:ID 3:firstletter
+                    Console.WriteLine("BodyJSONmdl is null");
+                }
 
-                    Console.WriteLine("Getting drinks starting with the letter: " + alphabet[letter] + " | " + thisletter.drinks.Count);
+                Models.Root TmpBody = BodyJSONmdl;
 
-                    for (int thisdrinkinx = thisletter.drinks.Count - 1; thisdrinkinx >= 0; thisdrinkinx--)
-                    {
-                        Models.Drinks thisdrink = thisletter.drinks[thisdrinkinx];
+                for (int element = 0; element < BodyJSONmdl.drinks.Count; ++element)
+                {
 
-                        string[] thisdrinksIngredients = { thisdrink.strIngredient1, thisdrink.strIngredient2, thisdrink.strIngredient3, thisdrink.strIngredient4, thisdrink.strIngredient5, thisdrink.strIngredient6, thisdrink.strIngredient7,thisdrink.strIngredient8, thisdrink.strIngredient9, thisdrink.strIngredient10, thisdrink.strIngredient11, thisdrink.strIngredient12, thisdrink.strIngredient13, thisdrink.strIngredient14, thisdrink.strIngredient15};
+                    Models.Root Tmp = await controller.GETDrinks(2, BodyJSONmdl.drinks[element].idDrink);
 
-                            for (int thisdrinkInginx = 1; thisdrinkInginx < 16; thisdrinkinx++)
-                                {
-                                        if (thisdrinksIngredients[thisdrinkInginx] == IngFilter)
-                                        {
-                                            thisletter.drinks.Add(BodyJSONmdl.drinks[thisdrinkinx]);
+                    //Console.WriteLine("Tmp search length: " + Tmp.drinks.Count);
 
-                                            Console.WriteLine("Added: " + BodyJSONmdl.drinks[thisdrinkinx]);
-                                        }
-                                }
-    
-                    }
+                    BodyJSONmdl.drinks[element] = Tmp.drinks[0];
 
+                    Console.WriteLine(BodyJSONmdl.drinks[element].strDrink + " Has " + IngFilter + "  |  " + Tmp.drinks[0].strDrink);
 
                 }
-               
-
             }
 
             else
