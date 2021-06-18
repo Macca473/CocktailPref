@@ -2,6 +2,7 @@
 
 /* /Pages/DrinkView.razor.rz.scp.css */
 body[b-na9dfjliwd] {
+    font-family: 'Lobster';
 }
 
 div[b-na9dfjliwd] {
@@ -20,18 +21,25 @@ div[b-na9dfjliwd] {
 }
 
 .drinkview[b-na9dfjliwd] {
+    font-family: 'Lobster';
     position: relative;
-    color:aqua;
+    color: aqua;
     height: 42.5px;
 }
 
 .DrInstructions[b-na9dfjliwd] {
+    font-family: 'Lobster-Regular';
     font-size: smaller;
     color: dimgray;
     position: relative;
     height: 126px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Lobster-Regular';
+    src: url("../wwwroot/css/open-iconic/font/fonts/Lobster-Regular.ttf") format("truetype");
 }
 /* /Pages/FetchData.razor.rz.scp.css */
 body[b-3su10ndsq5] {
