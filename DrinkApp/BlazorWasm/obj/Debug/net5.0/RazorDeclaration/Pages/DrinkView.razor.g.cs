@@ -129,13 +129,17 @@ using Blazored.Typeahead;
 
     public int fontSize(string text)
     {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
+        var logger = LoggerFactory.CreateLogger<DrinkView>();
 
         int Length = text.Length;
 
-        int size = 200 - (Length * 10);
+        int maxwidth = 20;
 
-        logger.LogDebug("200 - (" + Length + ") * 10 = " + size);
+        //int size = (maxwidth * Length) / ((Length * maxwidth) / maxwidth);
+
+        int size = ((maxwidth * 10) / Length);
+
+        logger.LogDebug(text + " is " + (Length) + " long and the size is " + size + " | " + ((Length * 100) / 60));
 
         return size;
     }

@@ -18,8 +18,11 @@ div {
 }
 
 .drinkview {
-    font-family: 'Lobster';
+    font-family: 'Lobster-Regular';
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: aqua;
     height: 42.5px;
 }
@@ -34,7 +37,3 @@ div {
     overflow: hidden;
 }
 
-@font-face {
-    font-family: 'Lobster-Regular';
-    src: url("../wwwroot/css/open-iconic/font/fonts/Lobster-Regular.ttf") format("truetype");
-}

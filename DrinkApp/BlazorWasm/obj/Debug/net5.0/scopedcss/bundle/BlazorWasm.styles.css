@@ -19,8 +19,11 @@ div[b-na9dfjliwd] {
 }
 
 .drinkview[b-na9dfjliwd] {
-    font-family: 'Lobster';
+    font-family: 'Lobster-Regular';
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: aqua;
     height: 42.5px;
 }
@@ -35,10 +38,6 @@ div[b-na9dfjliwd] {
     overflow: hidden;
 }
 
-@font-face {
-    font-family: 'Lobster-Regular';
-    src: url("../wwwroot/css/open-iconic/font/fonts/Lobster-Regular.ttf") format("truetype");
-}
 /* /Pages/FetchData.razor.rz.scp.css */
 body[b-3su10ndsq5] {
 }

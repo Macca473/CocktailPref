@@ -14,12 +14,12 @@
         <p>@drink.strTags</p>*@
     <div class="container">
         <div class="row">
-            <div class="col-6 drinkview" style="font-size:@fontSize(@drink.strDrink)">
-                @drink.strDrink
-            </div>
-            <div class="col-6 drinkview" style="font-size:@fontSize(@drink.strAlcoholic)">
-                @drink.strAlcoholic
-            </div>
+            <div  style="font-size:@fontSize(@drink.strDrink)px" class="col-6 drinkview">
+            @drink.strDrink
+        </div>
+        <div  style="font-size:@fontSize(@drink.strAlcoholic)px" class="col-6 drinkview">
+            @drink.strAlcoholic
+        </div>
         </div>
         <div class="DrInstructions">
             @drink.strInstructions
@@ -43,13 +43,17 @@
 
     public int fontSize(string text)
     {
-        var logger = LoggerFactory.CreateLogger<FetchData>();
+        var logger = LoggerFactory.CreateLogger<DrinkView>();
 
         int Length = text.Length;
 
-        int size = 200 - (Length * 10);
+        int maxwidth = 20;
 
-        logger.LogDebug("200 - (" + Length + ") * 10 = " + size);
+        //int size = (maxwidth * Length) / ((Length * maxwidth) / maxwidth);
+
+        int size = ((maxwidth * 10) / Length);
+
+        logger.LogDebug(text + " is " + (Length) + " long and the size is " + size + " | " + ((Length * 100) / 60));
 
         return size;
     }
