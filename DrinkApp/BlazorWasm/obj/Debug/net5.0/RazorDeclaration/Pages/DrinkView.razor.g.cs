@@ -127,22 +127,6 @@ using Blazored.Typeahead;
 
     //}
 
-    public int fontSize(string text)
-    {
-        var logger = LoggerFactory.CreateLogger<DrinkView>();
-
-        int Length = text.Length;
-
-        int maxwidth = 20;
-
-        //int size = (maxwidth * Length) / ((Length * maxwidth) / maxwidth);
-
-        int size = ((maxwidth * 10) / Length);
-
-        logger.LogDebug(text + " is " + (Length) + " long and the size is " + size + " | " + ((Length * 100) / 60));
-
-        return size;
-    }
 
 #line default
 #line hidden

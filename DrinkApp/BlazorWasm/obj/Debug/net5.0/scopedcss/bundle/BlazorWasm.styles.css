@@ -25,7 +25,19 @@ div[b-na9dfjliwd] {
     justify-content: center;
     align-items: center;
     color: aqua;
+    font-size: 20px;
     height: 42.5px;
+}
+
+alcoview[b-na9dfjliwd] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 20px;
+    height: 22px;
 }
 
 .DrInstructions[b-na9dfjliwd] {
@@ -33,7 +45,7 @@ div[b-na9dfjliwd] {
     font-size: smaller;
     color: dimgray;
     position: relative;
-    height: 126px;
+    height: 104px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -157,6 +169,15 @@ div[b-inx6fnyr39] {
     margin-right: auto;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
+.background[b-2ar46ifnr2] {
+    height: 100vh;
+    top: 0;
+    background: rgb(86,179,142);
+    background: linear-gradient(336deg, rgba(86,179,142,1) 6%, rgba(58,169,198,1) 94%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .page[b-2ar46ifnr2] {
     position: relative;
     margin-left: auto;

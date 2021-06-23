@@ -24,7 +24,19 @@ div {
     justify-content: center;
     align-items: center;
     color: aqua;
+    font-size: 20px;
     height: 42.5px;
+}
+
+alcoview {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 20px;
+    height: 22px;
 }
 
 .DrInstructions {
@@ -32,7 +44,7 @@ div {
     font-size: smaller;
     color: dimgray;
     position: relative;
-    height: 126px;
+    height: 104px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
