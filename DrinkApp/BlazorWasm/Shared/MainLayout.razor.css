@@ -1,9 +1,9 @@
 .background {
     height: 100vh;
-    top: 0;
+    margin: 0px;
     background: rgb(86,179,142);
     background: linear-gradient(336deg, rgba(86,179,142,1) 6%, rgba(58,169,198,1) 94%);
-    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
 }
 

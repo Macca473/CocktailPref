@@ -1,7 +1,10 @@
 ﻿@inherits LayoutComponentBase
-<div class="background">
+@*<div class="background">
     <div class="page">
         @Body
         <BlazorWasm.Pages.FetchData />
     </div>
-</div>
+</div>*@
+
+@Body
+<BlazorWasm.Pages.FetchData />

@@ -1,32 +1,74 @@
 body[b-3su10ndsq5] {
+
+}
+
+.title[b-3su10ndsq5] {
+    min-height: 15vh;
+    margin: auto;
+}
+
+.Title[b-3su10ndsq5] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    top: 15px;
+}
+
+.background[b-3su10ndsq5] {
+    /*    height: 1500px;*/
+    max-height: 100%;
+    margin: 0px;
+    background: rgb(86,179,142);
+    background: linear-gradient(336deg, rgba(86,179,142,1) 6%, rgba(58,169,198,1) 94%);
+    background-size: auto;
+    background-attachment: scroll;
+}
+
+.formStyle[b-3su10ndsq5] {
+    min-height: 15vh;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.drinkView[b-3su10ndsq5] {
+    min-height: 70vh;
+}
+
+.page[b-3su10ndsq5] {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+/*    height: 100%;*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 1000px) {
+    .page[b-3su10ndsq5] {
+        position: relative;
+        left: 0px;
+        width: 100vw;
+    }
 }
 
 .Cpersent[b-3su10ndsq5] {
-    width: 100%;
-    height: 100%;
+    position: relative;
+/*    max-height: 100%;*/
+    display: flex;
+    flex-wrap: wrap;
 }
 
-div[b-3su10ndsq5] {
+/*div {
     border-style: solid solid solid solid;
-    border-width: 1px;
-    width: 100%;
-    height: 100%;
+    border-width: 1px;*/
+/*    width: 100%;
+    height: 100%;*/
     /*    background-color: blue;*/
-}
-
-
-
-.drinkbox[b-3su10ndsq5] {
-    width: 100%;
-    height: 200px;
-}
-
-@media only screen and (max-width: 600px) {
-    .drinkbox[b-3su10ndsq5] {
-        width: 100%;
-        height: 400px;
-    }
-}
+/*}*/
 
 .Ingredient[b-3su10ndsq5] {
     background-color: #9089b0
@@ -51,4 +93,16 @@ div[b-3su10ndsq5] {
     height: 25px;
     width: 25px;
     top: 5px;
+}
+
+.drinkbox[b-3su10ndsq5] {
+    width: 100%;
+    height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .drinkbox[b-3su10ndsq5] {
+        width: 100%;
+        height: 400px;
+    }
 }

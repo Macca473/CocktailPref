@@ -12,69 +12,73 @@
 
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
-<h1>Drink Search</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-<div class="container-fluid">
-    <form>
-        <div class="row">
-            <div class="col-sm-3">
-                Drink: <input type="text" @bind="SearchString" class="text_input"/>
-            </div>
-            <div class="col-sm-3 dropdown">
-                <Ingsearch @key="IngFilter" />
-                @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
-                @*<div class="dropdown-content">
-                        @if (IngredientList == null)
-                        { }
-                        else
-                        {
-                            @foreach (var Ingredient in IngredientList)
-                            {
-                                <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
-                            }
-                        }
-                    </div>*@
-            </div>
-            <div class="col-sm-3 Alcoholcheck">
-                    Alcoholic?:
-                    <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
-            </div>
-            <div class="col-sm-3 textInput">
-                    <input type="button" value="Filter" @onclick="UpdateSearch"/>
-            </div>
-
+<div class="background">
+    <div class="page Cpersent">
+        <div class="title">
+            <h1 class="Title">Drink Search</h1>
         </div>
-    </form>
-</div>
 
-<div class="container-fluid">
-    <div class="row">
-        @if (Tobj == null)
-        {
-            <p>Loading...</p>
-        }
+        <div class="container-fluid">
+            <form>
+                <div class="row formStyle">
+                    <div class="col-sm-3 textInput" style="bottom: 9px">
+                        Drink: <input type="text" @bind="SearchString" class="text_input" />
+                    </div>
+                    <div class="col-sm-3 textInput" style="bottom: 2px">
+                        <Ingsearch @key="IngFilter" />
+                        @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
+                        @*<div class="dropdown-content">
+                                @if (IngredientList == null)
+                                { }
+                                else
+                                {
+                                    @foreach (var Ingredient in IngredientList)
+                                    {
+                                        <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                                    }
+                                }
+                            </div>*@
+                    </div>
+                    <div class="col-sm-3 Alcoholcheck">
+                        Alcoholic?:
+                        <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
+                    </div>
+                    <div class="col-sm-3 textInput">
+                        <input type="button" value="Filter" @onclick="UpdateSearch" />
+                    </div>
 
-
-        else if (Tobj.drinks == null)
-        {
-            <p><em>What is '@SearchString'?</em></p>
-
-        }
-        else
-
-        {
-            @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
-            {
-                <div class="col-sm-3 drinkbox">
-                    <DrinkView drink="Tobj.drinks[drink]" />
                 </div>
-            }
+            </form>
+        </div>
 
-        }
+        <div class="container-fluid drinkView Cpersent">
+            <div class="row Cpersent">
+                @if (Tobj == null)
+                {
+                    <p>Loading...</p>
+                }
+
+
+                else if (Tobj.drinks == null)
+                {
+                    <p><em>What is '@SearchString'?</em></p>
+
+                }
+                else
+
+                {
+                    @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
+                    {
+                        <div class="col-sm-3 drinkbox">
+                            <DrinkView drink="Tobj.drinks[drink]" />
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
     </div>
 </div>
-
 
 
 @code {

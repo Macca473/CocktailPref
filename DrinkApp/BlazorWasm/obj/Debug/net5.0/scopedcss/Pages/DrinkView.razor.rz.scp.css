@@ -1,12 +1,11 @@
 body[b-na9dfjliwd] {
-    font-family: 'Lobster';
 }
 
-div[b-na9dfjliwd] {
+/*div {
     border-style: solid solid solid solid;
-    border-width: 1px;
+    border-width: 1px;*/
     /*    background-color: blue;*/
-}
+/*}*/
 
 .marginclass[b-na9dfjliwd] {
     width: 100%;
@@ -15,6 +14,7 @@ div[b-na9dfjliwd] {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+    background-color: lightgray;
 }
 
 .drinkview[b-na9dfjliwd] {
@@ -25,7 +25,7 @@ div[b-na9dfjliwd] {
     align-items: center;
     color: aqua;
     font-size: 20px;
-    height: 42.5px;
+    height: 50.5px;
 }
 
 alcoview[b-na9dfjliwd] {
@@ -34,7 +34,7 @@ alcoview[b-na9dfjliwd] {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: aqua;
+    color: gray;
     font-size: 20px;
     height: 22px;
 }
@@ -42,9 +42,9 @@ alcoview[b-na9dfjliwd] {
 .DrInstructions[b-na9dfjliwd] {
     font-family: 'Lobster-Regular';
     font-size: smaller;
-    color: dimgray;
+    color: gray;
     position: relative;
-    height: 104px;
+    height: 96px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
