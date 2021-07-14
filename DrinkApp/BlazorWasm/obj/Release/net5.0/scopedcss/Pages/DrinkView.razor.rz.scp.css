@@ -1,0 +1,51 @@
+body[b-na9dfjliwd] {
+}
+
+/*div {
+    border-style: solid solid solid solid;
+    border-width: 1px;*/
+    /*    background-color: blue;*/
+/*}*/
+
+.marginclass[b-na9dfjliwd] {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+.drinkview[b-na9dfjliwd] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 20px;
+    height: 50.5px;
+}
+
+alcoview[b-na9dfjliwd] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 20px;
+    height: 22px;
+}
+
+.DrInstructions[b-na9dfjliwd] {
+    font-family: 'Lobster-Regular';
+    font-size: smaller;
+    color: gray;
+    position: relative;
+    height: 96px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

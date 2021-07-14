@@ -1,0 +1,23 @@
+.background[b-2ar46ifnr2] {
+    height: 100vh;
+    margin: 0px;
+    background: rgb(86,179,142);
+    background: linear-gradient(336deg, rgba(86,179,142,1) 6%, rgba(58,169,198,1) 94%);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.page[b-2ar46ifnr2] {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .page[b-2ar46ifnr2] {
+        position: relative;
+        left: 0px;
+        width: 100vw;
+    }
+}

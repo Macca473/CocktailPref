@@ -21,11 +21,11 @@
         <div class="container-fluid">
             <form>
                 <div class="row formStyle">
-                    <div class="col-sm-3 textInput" style="bottom: 9px">
-                        Drink: <input type="text" @bind="SearchString" class="text_input" />
+                    <div class="col-lg-3 textInput" style="bottom: 9px">
+                        Drink: <input type="text" @bind="SearchString"/>
                     </div>
-                    <div class="col-sm-3 textInput" style="bottom: 2px">
-                        <Ingsearch @key="IngFilter" />
+                    <div class="col-lg-3 textInput" style="bottom: 2px">
+                        <Ingsearch @key="IngFilter"/>
                         @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
                         @*<div class="dropdown-content">
                                 @if (IngredientList == null)
@@ -39,15 +39,22 @@
                                 }
                             </div>*@
                     </div>
-                    <div class="col-sm-3 Alcoholcheck">
-                        Alcoholic?:
-                        <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
-                    </div>
-                    <div class="col-sm-3 textInput">
-                        <input type="button" value="Filter" @onclick="UpdateSearch" />
-                    </div>
+                    <div class="col-lg-3 Alcoholcheck">
+                        @*<div class="row Cpersent">*@
+                            @*<div class="col-4">*@
+                                Alcoholic?:
+                            @*</div>
+                            <div class="col-7 checkbxBox">*@
+                                <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
+                            @*</div>*@
+                        @*</div>*@
+                        </div>
 
-                </div>
+                        <div class="col-lg-3 FilterBtn">
+                            <input type="button" value="Filter" @onclick="UpdateSearch" />
+                        </div>
+
+                    </div>
             </form>
         </div>
 
@@ -69,8 +76,14 @@
                 {
                     @for (int drink = 0; drink < Tobj.drinks.Count; drink++)
                     {
-                        <div class="col-sm-3 drinkbox">
-                            <DrinkView drink="Tobj.drinks[drink]" />
+                        <div class="col-sm-3 drinksbox">
+                            <div class="SmallDV">
+                                <DrinkView drink="Tobj.drinks[drink]"  />
+                            </div>
+
+                            <div class="LargeDV">
+                                <BiggerDrinkView drink="Tobj.drinks[drink]"  /> 
+                            </div>
                         </div>
                     }
 

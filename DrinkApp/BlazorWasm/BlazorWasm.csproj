@@ -15,11 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\BiggerDrinkView.razor.css" />
     <None Remove="Pages\DrinkView.razor.css" />
     <None Remove="Pages\FetchData.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Pages\BiggerDrinkView.razor.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Pages\DrinkView.razor.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

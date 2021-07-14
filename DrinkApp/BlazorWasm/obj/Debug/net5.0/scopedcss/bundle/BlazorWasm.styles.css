@@ -1,3 +1,56 @@
+/* /Pages/BiggerDrinkView.razor.rz.scp.css */
+body[b-3evnfg23ic] {
+}
+
+/*div {
+    border-style: solid solid solid solid;
+    border-width: 1px;*/
+    /*    background-color: blue;*/
+/*}*/
+
+.marginclass[b-3evnfg23ic] {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+/*    background-color: lightgray;*/
+    background-color: aqua;
+}
+
+.drinkview[b-3evnfg23ic] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 20px;
+    height: 50.5px;
+}
+
+alcoview[b-3evnfg23ic] {
+    font-family: 'Lobster-Regular';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 20px;
+    height: 22px;
+}
+
+.DrInstructions[b-3evnfg23ic] {
+    font-family: 'Lobster-Regular';
+    font-size: smaller;
+    color: gray;
+    position: relative;
+    height: 96px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 /* /Pages/DrinkView.razor.rz.scp.css */
 body[b-na9dfjliwd] {
 }
@@ -86,9 +139,7 @@ body[b-3su10ndsq5] {
     border-radius: 5px;
 }
 
-.drinkView[b-3su10ndsq5] {
-    min-height: 70vh;
-}
+
 
 .page[b-3su10ndsq5] {
     position: relative;
@@ -100,7 +151,11 @@ body[b-3su10ndsq5] {
     flex-wrap: wrap;
 }
 
+
 @media only screen and (max-width: 1000px) {
+
+
+
     .page[b-3su10ndsq5] {
         position: relative;
         left: 0px;
@@ -115,13 +170,13 @@ body[b-3su10ndsq5] {
     flex-wrap: wrap;
 }
 
-/*div {
+div[b-3su10ndsq5] {
     border-style: solid solid solid solid;
-    border-width: 1px;*/
+    border-width: 1px;
 /*    width: 100%;
     height: 100%;*/
-    /*    background-color: blue;*/
-/*}*/
+/*        background-color: blue;*/
+}
 
 .Ingredient[b-3su10ndsq5] {
     background-color: #9089b0
@@ -130,15 +185,27 @@ body[b-3su10ndsq5] {
 .textInput[b-3su10ndsq5] {
     position: relative;
     top: 20%;
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
 .Alcoholcheck[b-3su10ndsq5] {
     position: relative;
     top: 20%;
-    width: 80%;
+    min-width: 200px;
+    /*    max-height: 30px;*/
     margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.FilterBtn[b-3su10ndsq5] {
+    position: relative;
+    top: 20%;
+    min-width: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .checkbx[b-3su10ndsq5] {
@@ -148,13 +215,44 @@ body[b-3su10ndsq5] {
     top: 5px;
 }
 
-.drinkbox[b-3su10ndsq5] {
+.checkbxBox[b-3su10ndsq5] {
+    position: relative;
+    height: 27px;
+    width: 27px;
+}
+
+.drinkView[b-3su10ndsq5] {
+    min-height: 70vh;
+}
+
+.drinksbox[b-3su10ndsq5] {
     width: 100%;
     height: 200px;
 }
 
+.LargeDV[b-3su10ndsq5] {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.SmallDV[b-3su10ndsq5] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 @media only screen and (max-width: 600px) {
-    .drinkbox[b-3su10ndsq5] {
+
+    .LargeDV[b-3su10ndsq5] {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .SmallDV[b-3su10ndsq5] {
+        display: none;
+        flex-wrap: wrap;
+    }
+
+    .drinksbox[b-3su10ndsq5] {
         width: 100%;
         height: 400px;
     }

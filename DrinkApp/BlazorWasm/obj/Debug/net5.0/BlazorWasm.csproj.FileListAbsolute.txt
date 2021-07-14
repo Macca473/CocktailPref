@@ -1007,3 +1007,6 @@ D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\dpjXFLlM.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\s9FJ+5P0.gz
 D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\build-gz\8bYK+mav.gz
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\RazorDeclaration\Pages\BiggerDrinkView.razor.g.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\Razor\Pages\BiggerDrinkView.razor.g.cs
+D:\dotNetStuff\CocktailPrefRepo\CocktailPref\DrinkApp\BlazorWasm\obj\Debug\net5.0\scopedcss\Pages\BiggerDrinkView.razor.rz.scp.css
