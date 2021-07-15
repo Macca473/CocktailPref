@@ -18,43 +18,47 @@
             <h1 class="Title">Drink Search</h1>
         </div>
 
-        <div class="container-fluid">
+        <div class="container">
             <form>
                 <div class="row formStyle">
-                    <div class="col-lg-3 textInput" style="bottom: 9px">
-                        Drink: <input type="text" @bind="SearchString"/>
+                    <div class="col-lg-6 textInputdiv">
+                        <div>
+                            Drink: <input type="text" @bind="SearchString" class="text_input" />
+                        </div>
                     </div>
-                    <div class="col-lg-3 textInput" style="bottom: 2px">
-                        <Ingsearch @key="IngFilter"/>
+                    <div class="col-lg-6 textInputdiv">
+                        <Ingsearch @key="IngFilter" />
                         @*Ingredient: <input type="text" @oninput="filtering" @bind="IngFilter" class="dropbtn" />*@
                         @*<div class="dropdown-content">
-                                @if (IngredientList == null)
-                                { }
-                                else
-                                {
-                                    @foreach (var Ingredient in IngredientList)
-                                    {
-                                        <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
-                                    }
-                                }
-                            </div>*@
+                    @if (IngredientList == null)
+                    { }
+                    else
+                    {
+                        @foreach (var Ingredient in IngredientList)
+                        {
+                            <input type="button" style="background-color:@Ingredient.Colors;" value="@Ingredient.Ingredients" @onclick="(e => selectIngredient(Ingredient.Ingredients))" />
+                        }
+                    }
+                </div>*@
                     </div>
-                    <div class="col-lg-3 Alcoholcheck">
+                </div>
+                <div class="row formStyle">
+                    <div class="col-lg-6 Alcoholcheck">
                         @*<div class="row Cpersent">*@
-                            @*<div class="col-4">*@
-                                Alcoholic?:
-                            @*</div>
-                            <div class="col-7 checkbxBox">*@
-                                <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
-                            @*</div>*@
+                        @*<div class="col-4">*@
+                        Alcoholic?:
+                        @*</div>
+                <div class="col-7 checkbxBox">*@
+                        <input type="checkbox" @bind="AlcoholicBool" class="checkbx" />
                         @*</div>*@
-                        </div>
-
-                        <div class="col-lg-3 FilterBtn">
-                            <input type="button" value="Filter" @onclick="UpdateSearch" />
-                        </div>
-
+                        @*</div>*@
                     </div>
+
+                    <div class="col-lg-6 FilterBtn">
+                        <input type="button" value="Filter" @onclick="UpdateSearch" />
+                    </div>
+
+                </div>
             </form>
         </div>
 

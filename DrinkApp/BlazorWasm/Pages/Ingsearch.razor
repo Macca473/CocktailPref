@@ -7,7 +7,7 @@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div>
-    Ingredient: <input type="text" @oninput="filtering" @bind="@IngFilter" class="text_input" />
+    Ingredient: <input type="text" @oninput="filtering" @bind="@IngFilter" class="text_input dropdown" />
     <div class="dropdown-content">
         @if (IngredientList == null)
         { }
